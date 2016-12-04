@@ -29,7 +29,7 @@ sufficient CSS styling:
 * [Sample State][state-shape]
 
 [wireframes]: docs/wireframes
-[components]: docs/component-hierarchy.md
+[components]: docs/component-hierarchy/component-hierarchy.md
 [sample-state]: docs/state-shape/sample-shape.md
 [api-endpoints]: docs/api-endpoints.md
 [schema]: docs/schema.md
