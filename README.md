@@ -1,16 +1,16 @@
-# FresherNote
+# Formulator
 
 [Heroku link][heroku] **Note:** This should be a link to your production site
 
-[Trello link][trello]
+[Wufoo][wufoo]
 
 [heroku]: http://www.herokuapp.com
-[trello]: https://trello.com/b/ALgfuX0Q/freshernote
+[wufoo]: https://www.wufoo.com/
 
 ## Minimum Viable Product
 
-FresherNote is a web application inspired by Evernote built using Ruby on Rails
-and React/Redux.  By the end of Week 9, this app will, at a minimum, satisfy the
+Formulator is a web application inspired by Wufoo built using Ruby on Rails
+and React/Redux. By its completion, this app will, at a minimum, satisfy the
 following criteria with smooth, bug-free navigation, adequate seed data and
 sufficient CSS styling:
 
