@@ -1,21 +1,21 @@
 # Relationship Information
 
 ## Users
-have many forms.
+- have many forms.
 
 ## Forms
-belong to a user.
-have many fields.
-have many submissions.
+- belong to a user.
+- have many fields.
+- have many submissions.
 
 ## Fields
-belong to a form.
-have many entries.
+- belong to a form.
+- have many entries.
  
 ## Entries
-belong to a field.
-belong to a submission.
+- belong to a field.
+- belong to a submission.
 
 ## Submissions
-belong to a form.
-have many entries.
+- belong to a form.
+- have many entries.
