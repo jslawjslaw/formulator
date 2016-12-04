@@ -30,7 +30,7 @@ sufficient CSS styling:
 
 [wireframes]: docs/wireframes
 [components]: docs/component hierarchy.md
-[sample-state]: docs/sample-shape.md
+[sample-state]: docs/state-shape/sample-shape.md
 [api-endpoints]: docs/api-endpoints.md
 [schema]: docs/schema.md
 
