@@ -24,9 +24,9 @@ sufficient CSS styling:
 ## Design Docs
 * [Wireframes][wireframes]
 * [React Components](https://github.com/jslawjslaw/full-stack-project/blob/master/docs/component-hierarchy/component-hierarchy.md)
-* [API Endpoints][api-endpoints]
-* [DB schema][schema]
-* [Sample State][state-shape]
+* [API Endpoints](https://github.com/jslawjslaw/full-stack-project/blob/master/docs/component-hierarchy/component-hierarchy.md)
+* [DB schema](https://github.com/jslawjslaw/full-stack-project/blob/master/docs/schema/schema.md)
+* [Sample State](https://github.com/jslawjslaw/full-stack-project/blob/master/docs/state-shape/sample-shape.md)
 
 [wireframes]: docs/wireframes
 [components]: docs/component-hierarchy/component-hierarchy.md
