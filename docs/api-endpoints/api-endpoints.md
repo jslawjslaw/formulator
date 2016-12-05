@@ -35,3 +35,8 @@
 - `GET /api/forms/:id/fields/:fieldId`
 - `PATCH /api/forms/:id/fields/:fieldId`
 - `DELETE /api/forms/:id/fields/:fieldId`
+
+### Submissions
+
+- `GET /api/submissions`
+- `GET /api/submissions/:id`
