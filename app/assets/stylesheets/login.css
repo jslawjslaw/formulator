@@ -1,0 +1,52 @@
+.overlay {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5000;
+  background: #000;
+  opacity: .7;
+  position: fixed;
+}
+
+.box {
+  background: #FFE27F;
+  border: 1px solid #D4B240;
+  border-right: 1px solid #A08730;
+  border-bottom: 1px solid #A08730;
+  border-radius: 50px;
+  font-family: sans-serif;
+  visibility: visible;
+  padding: 25px;
+  margin-left: 200px;
+  margin-top: 300px;
+}
+
+.innerbox {
+  height: auto;
+  min-height: 223px;
+  padding: 25px 30px;
+  background: #fff;
+  border: 1px solid #EFCA4A;
+  border-radius: 30px;
+  display: block;
+  width: 770px;
+}
+
+.info {
+  margin: 0 0 5px 0;
+  padding: 0 1% 1.1em 1%;
+  border-bottom: 1px dotted #ccc;
+}
+
+.info h1 {
+  font-weight: normal;
+  font-size: 160%;
+  margin: 0 0 5px 0;
+}
+
+form label {
+  font-size: 115%;
+  padding-bottom: 4px;
+  font-weight: normal;
+}

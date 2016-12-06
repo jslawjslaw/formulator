@@ -1,0 +1,38 @@
+body, div, h1, p, a, ul, li, form, label, br, button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  text-align: inherit;
+  text-decoration: inherit;
+  vertical-align: inherit;
+  color: inherit;
+  box-sizing: inherit;
+  background: transparent;
+}
+
+.group {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+div {
+  font-family: "Lucida Grande", Tahoma, Arial, sans-serif;
+}
+
+button {
+  display: inline-block;
+  margin: 0 .7em 0 0;
+  border: 1px solid #dedede;
+  border-right: 1px solid #bbb;
+  border-bottom: 1px solid #bfbfbf;
+  background: -webkit-linear-gradient(top, #FFF, #E9E9E9);
+  font-size: 100%;
+  color: #464646;
+  cursor: pointer;
+  text-decoration: none;
+  border-radius: 11px;
+  background-clip: padding-box;
+  box-shadow: rgba(0,0,0,0.1) 0px 1px 1px;
+}
