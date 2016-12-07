@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import Header from '../home/header';
 
 class Signup extends React.Component {
   constructor(props) {
@@ -8,7 +9,6 @@ class Signup extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.handleCancel = this.handleCancel.bind(this);
   }
 
   handleSubmit(e) {
@@ -32,38 +32,29 @@ class Signup extends React.Component {
     }
   }
 
-  handleCancel(e) {
-    e.preventDefault();
-    this.props.router.push('/');
-  }
-
   render() {
     return(
       <div>
-        <h1>Create powerful forms today.</h1>
-        <Link to={"/login"}>Log In</Link>
+        <Header />
 
-        <ul>{ this.props.errors }</ul>
-
-        <form>
-          <label>Email Address
-            <input type="email" name="email" onChange={ this.handleChange }></input>
-          </label>
-          <br/>
-
-          <label>Password
-            <input type="password" name="password" onChange={ this.handleChange }></input>
-          </label>
-          <br/>
-
-          <label>Username
-            <input type="text" name="username" onChange={ this.handleChange }></input>
-          </label>
-          <br/>
-
-          <button onClick={ this.handleSubmit }>Sign Up Free</button>
-        </form>
-        <button onClick={ this.handleCancel }>Cancel</button>
+        <div className="signup">
+          <section className="signup-section">
+            <h1 className="signup-header">Create powerful forms today.</h1>
+            <ul>{ this.props.errors }</ul>
+            <form className="signup-form">
+              <label className="signup-label">Email Address
+                <input className="signup-input" type="email" name="email" onChange={ this.handleChange }></input>
+              </label>
+              <label>Password
+                <input className="signup-input" type="password" name="password" onChange={ this.handleChange }></input>
+              </label>
+              <label>Username
+                <input className="signup-input" type="text" name="username" onChange={ this.handleChange }></input>
+              </label>
+              <button className="signup-button" onClick={ this.handleSubmit }>Sign Up Free</button>
+            </form>
+          </section>
+        </div>
       </div>
     );
   }
