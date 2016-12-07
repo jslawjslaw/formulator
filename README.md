@@ -4,7 +4,7 @@
 
 [Wufoo][wufoo]
 
-[heroku]: http://www.herokuapp.com
+[heroku]: https://formulator.herokuapp.com/#/
 [wufoo]: https://www.wufoo.com/
 
 ## Minimum Viable Product
