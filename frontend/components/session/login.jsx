@@ -46,12 +46,12 @@ class Login extends React.Component {
           <ul>{ this.props.errors }</ul>
 
           <form>
-            <label>Email:
+            <label>Email Address
               <input type="email" name="email" onChange={ this.handleChange }></input>
             </label>
             <br/>
 
-            <label>Password:
+            <label>Password
               <input type="password" name="password" onChange={ this.handleChange }></input>
             </label>
             <br/>

@@ -1,0 +1,85 @@
+.home-header {
+  background-color: #e66760;
+  border-bottom: 1px solid white;
+  padding: 0 1em;
+  height: 60px;
+  line-height: 60px;
+}
+
+.home-nav {
+  box-sizing: border-box;;
+  margin: 0 auto;
+  width: 900px;
+  border-left: 1px solid #e66770;
+  color: white;
+}
+
+.home-h1 {
+  float: left;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.home-nav-link {
+  float: right;
+  display: block;
+  position: relative;
+}
+
+.home-ahoy {
+  display: none;
+  position: absolute;
+  top: 0;
+  color: gold;
+}
+
+.home-login {
+  display: inline;
+  position: absolute;
+  top: 0;
+}
+
+.home-nav-link:hover .home-login {
+  display: none;
+}
+
+.home-nav-link:hover .home-ahoy {
+  display: inline;
+}
+
+.home-title-container {
+  width: auto;
+  background-color: #e86f69;
+}
+
+.home-section {
+  color: white;
+  text-align: center;
+  width: 900px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 100px;
+  border-left: 1px solid white;
+  height: 1000px;
+}
+
+.home-section-h1 {
+  margin-top: 20px;
+}
+
+.home-title-pirate {
+  display: block;
+  width: auto;
+  height: 300px;
+  margin: 0 auto;
+}
+
+.home-section-link {
+  background: #7fcde8;
+  border: 1px solid #b7e3f2;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+  padding: 10px;
+  display: block;
+  margin: 30px auto;
+  width: 100px;
+}
