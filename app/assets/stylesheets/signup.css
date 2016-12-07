@@ -6,4 +6,49 @@
 .signup-section {
   width: 900px;
   margin: 0 auto;
+  padding-top: 100px;
+  padding: 100px;
+}
+
+.signup-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.signup-form {
+  padding: 50px;
+  width: 600px;
+  margin: 0 100px;
+  background-color: white;
+}
+
+.signup-label {
+  display: block;
+  margin-bottom: 10px;
+  margin-left: 50px;
+}
+
+.signup-input {
+  display: block;
+  width: 500px;
+  margin-top: 10px;
+}
+
+.signup-button {
+  display: inline-block;
+  padding: 15px 32px;
+  text-align: center;
+  background-color: #61e064;
+  color: white;
+  font-size: 16px;
+  margin-left: 50px;
+  cursor: pointer;
+}
+
+.errors {
+  color: red;
+  list-style: none;
+  margin: 10px auto;
+  text-align: center;
+
 }

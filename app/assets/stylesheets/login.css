@@ -18,12 +18,12 @@
   font-family: sans-serif;
   visibility: visible;
   padding: 25px;
-  margin-left: 200px;
-  margin-top: 300px;
+  margin: auto auto;
+  width: 835px;
 }
 
 .innerbox {
-  height: auto;
+  height: 290px;
   min-height: 223px;
   padding: 25px 30px;
   background: #fff;
@@ -34,9 +34,11 @@
 }
 
 .info {
-  margin: 0 0 5px 0;
+  margin: 0 0 20px 0;
   padding: 0 1% 1.1em 1%;
   border-bottom: 1px dotted #ccc;
+  width: 320px;
+  text-align: left;
 }
 
 .info h1 {
@@ -45,10 +47,71 @@
   margin: 0 0 5px 0;
 }
 
-
-
 form label {
   font-size: 115%;
   padding-bottom: 4px;
   font-weight: normal;
+}
+
+.login-form {
+  display: inline-block;
+  width: 350px;
+  float: left;
+}
+
+.login-label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.login-input {
+  display: block;
+  width: 300px;
+  margin-top: 10px;
+}
+
+.signup-link-section {
+  width: 350px;
+  padding: 10px;
+  background-color: #FFF8DF;
+  border-radius: 20px;
+  border: 2px solid #EFCA4A;
+  text-align: center;
+  display: inline-block;
+  float: right;
+}
+
+.red-div {
+  border-bottom: 2px solid #EFCA4A;
+}
+
+.red-h2 {
+  color: red;
+  margin: 10px;
+}
+
+.green-h2 {
+  color: green;
+  margin: 10px;
+}
+
+.red-p, .green-p {
+  margin-bottom: 20px;
+}
+
+.button {
+  display: inline-block;
+  margin: 0 .7em 0 0;
+  border: 1px solid #dedede;
+  border-right: 1px solid #bbb;
+  border-bottom: 1px solid #bfbfbf;
+  background: -webkit-linear-gradient(top, #FFF, #E9E9E9);
+  font-size: 12px;
+  color: #464646;
+  cursor: pointer;
+  text-decoration: none;
+  border-radius: 11px;
+  background-clip: padding-box;
+  padding: 5px;
+  box-shadow: rgba(0,0,0,0.1) 0px 1px 1px;
 }

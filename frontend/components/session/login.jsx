@@ -9,12 +9,13 @@ class Login extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
+    this.handleGuest = this.handleGuest.bind(this);
   }
 
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.processForm(user).then(() => this.props.router.push('/'));
+    this.props.processForm(user).then(() => this.props.router.push('/manager'));
   }
 
   handleChange(e) {
@@ -33,6 +34,12 @@ class Login extends React.Component {
     this.props.router.push('/');
   }
 
+  handleGuest(e) {
+    e.preventDefault();
+    const guestUser = { email: "jon@email.com", password: "hello6" };
+    this.props.processForm(guestUser).then(() => this.props.router.push('/manager'));
+  }
+
   render() {
     return(
       <div className="overlay">
@@ -40,26 +47,35 @@ class Login extends React.Component {
           <div className="innerbox group">
             <div className="info">
               <h1>Formulator Welcomes You!</h1>
-              <p>Hey friend, please log in.</p>
+              <p>Hey matey, please log in.</p>
             </div>
 
-          <ul>{ this.props.errors }</ul>
+            <form className="login-form">
+              <ul className="errors">{ this.props.errors }</ul>
+              <label className="login-label">Email Address
+                <input className="login-input" type="email" name="email" onChange={ this.handleChange }></input>
+              </label>
+              <label className="login-label">Password
+                <input className="login-input" type="password" name="password" onChange={ this.handleChange }></input>
+              </label>
+              <button className="button" onClick={ this.handleSubmit }>Log In</button>
+              <button className="button" onClick={ this.handleGuest }>Guest Login</button>
+              <button className="button" onClick={ this.handleCancel }>Cancel</button>
+            </form>
 
-          <form>
-            <label>Email Address
-              <input type="email" name="email" onChange={ this.handleChange }></input>
-            </label>
-            <br/>
+            <Link to={"/signup"}>
+              <section className="signup-link-section">
+                <div className="red-div">
+                  <h2 className="red-h2">{ "Don't have an account?" }</h2>
+                  <p className="red-p">no worries!</p>
+                </div>
 
-            <label>Password
-              <input type="password" name="password" onChange={ this.handleChange }></input>
-            </label>
-            <br/>
-
-            <button onClick={ this.handleSubmit }>Log In</button>
-          </form>
-          <button onClick={ this.handleCancel }>Cancel</button>
-          <Link to={"/signup"}>Sign Up</Link>
+                <div>
+                  <h2 className="green-h2">{ "Create one now." }</h2>
+                  <p className="green-p">It's FREE!</p>
+                </div>
+              </section>
+            </Link>
           </div>
         </div>
       </div>

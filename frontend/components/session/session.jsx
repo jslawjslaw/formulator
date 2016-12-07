@@ -7,7 +7,7 @@ class Session extends React.Component {
     let errors;
     if (this.props.errors.responseJSON) {
       errors = this.props.errors.responseJSON.map( (error, idx) => {
-        return <li key={idx}>{error}</li>;
+        return <li className="error-li" key={idx}>{error}</li>;
       });
     } else {
       errors = "";

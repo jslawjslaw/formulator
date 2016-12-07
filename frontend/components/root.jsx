@@ -4,25 +4,33 @@ import { Router, Route, IndexRoute, IndexRedirect, hashHistory } from 'react-rou
 import App from './app';
 import HomeContainer from './home/home_container';
 import SessionContainer from './session/session_container';
-
+import FormManagerContainer from './form/form_manager_container';
 
 
 const Root = ({ store }) => {
-  function ensureNotLoggedIn(_, replace) {
-    const notLoggedIn = store.getState().session.currentUser;
-    if (notLoggedIn) {
-      replace('/');
+  function ensureLoggedIn(_, replace) {
+    const loggedIn = store.getState().session.currentUser;
+    if (!loggedIn) {
+      replace('/')
+    }
+  }
+
+  function redirectIfLoggedIn(_, replace) {
+    const currentUser = store.getState().session.currentUser;
+    if (currentUser) {
+      replace('/manager');
     }
   }
 
   return (
     <Provider store={ store }>
       <Router history={ hashHistory }>
-        <Route path="/" component={ App }>
+        <Route path="/" onEnter={ redirectIfLoggedIn } component={ App }>
           <IndexRoute component={ HomeContainer } />
           <Route path="/login" component={ SessionContainer } />
           <Route path="/signup" component={ SessionContainer } />
         </Route>
+        <Route path="/manager" onEnter={ ensureLoggedIn } component={ FormManagerContainer } />
       </Router>
     </Provider>
   )
