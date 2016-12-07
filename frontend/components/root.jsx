@@ -11,7 +11,7 @@ const Root = ({ store }) => {
   function ensureLoggedIn(_, replace) {
     const loggedIn = store.getState().session.currentUser;
     if (!loggedIn) {
-      replace('/')
+      replace('/');
     }
   }
 

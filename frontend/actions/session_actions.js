@@ -52,3 +52,9 @@ export function login(user) {
     );
   };
 }
+
+export function clearTheErrors() {
+  return (dispatch) => {
+    return dispatch(clearErrors());
+  };
+}

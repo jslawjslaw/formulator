@@ -5,3 +5,10 @@ export const receiveForm = (form) => {
     data: { form }
   });
 };
+
+export const fetchForms = () => {
+  return $.ajax({
+    method: "GET",
+    url: "/api/forms"
+  });
+};

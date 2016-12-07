@@ -8,6 +8,11 @@ class Api::FormsController < ApplicationController
     end
   end
 
+  def index
+    @forms = current_user.forms
+    render :index
+  end
+
   def update
   end
 
