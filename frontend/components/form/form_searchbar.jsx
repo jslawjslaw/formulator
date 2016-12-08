@@ -1,5 +1,6 @@
 import React from 'react';
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
+import FormLi from './form_li';
 
 class Searchbar extends React.Component {
   constructor(props) {
@@ -26,10 +27,6 @@ class Searchbar extends React.Component {
       }
     });
 
-    if (matches.length === 0) {
-      matches.push(<li>No Matches</li>);
-    }
-
     return matches;
   }
 
@@ -40,7 +37,14 @@ class Searchbar extends React.Component {
   render() {
     let forms = this.matches().map((form, idx) => {
       return (
-        <li className="form-lis" key={idx}>{ form.title }</li>
+        <li className="form-lis" key={idx}>
+          <FormLi
+            form={ form }
+            deleteForm={ this.props.deleteForm }
+            makePrivate={ this.props.makePrivate }
+            fetchForm={ this.props.fetchForm }
+            router={ this.props.router }/>
+        </li>
       );
     });
 
@@ -48,7 +52,7 @@ class Searchbar extends React.Component {
       <div className="search-content">
         <section className="search-section group">
           <label className="search-label">Search
-            <input onChange={ this.handleChange } value={ this.state.input }></input>
+            <input onChange={ this.handleChange } value={ this.state.input } />
           </label>
         </section>
         <section>

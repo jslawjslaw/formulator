@@ -13,10 +13,26 @@ class Api::FormsController < ApplicationController
     render :index
   end
 
+  def show
+    @form = Form.find(params[:id])
+    render :show
+  end
+
   def update
+    @form = Form.find(params[:form][:id])
+    if @form.update(form_params)
+      @forms = current_user.forms
+      render :index
+    else
+      render json: @form.errors.full_messages, status: 422
+    end
   end
 
   def destroy
+    @form = Form.find(params[:id])
+    @form.destroy
+    @forms = current_user.forms
+    render :index
   end
 
   private

@@ -5,6 +5,7 @@ import App from './app';
 import HomeContainer from './home/home_container';
 import SessionContainer from './session/session_container';
 import FormManagerContainer from './form/form_manager_container';
+import FormBuildContainer from './form/form_build_container';
 
 
 const Root = ({ store }) => {
@@ -31,6 +32,8 @@ const Root = ({ store }) => {
           <Route path="/signup" component={ SessionContainer } />
         </Route>
         <Route path="/manager" onEnter={ ensureLoggedIn } component={ FormManagerContainer } />
+        <Route path="/build/:id" onEnter={ ensureLoggedIn } component={ FormBuildContainer } />
+        <Route path="/build" onEnter={ ensureLoggedIn } component={ FormBuildContainer } />
       </Router>
     </Provider>
   )
