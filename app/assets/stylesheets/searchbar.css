@@ -1,0 +1,33 @@
+.search-content {
+  margin: 10px 0 12px 0;
+  padding: 0 0 10px 0;
+  border-radius: 5px;
+  background: #E5F0FF;
+  border: 1px solid #D5DFED;
+}
+
+.search-section {
+  background: #B3D7FF;
+  color: #152531;
+  padding: 12px;
+  font-size: 100%;
+  font-weight: bold;
+  text-align: right;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  height: auto;
+  box-sizing: content-box;
+}
+
+.search-label {
+  float: left;
+}
+
+.forms-list {
+  list-style: none;
+}
+
+.form-lis {
+  position: relative;
+  padding: 4px 0 4px 0;
+}

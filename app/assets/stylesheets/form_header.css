@@ -1,0 +1,74 @@
+.form-header {
+  box-sizing: content-box;
+  background-color: #cf3b19;
+  border-top: 1px solid #b83a1f;
+  border-left: 1px solid #b83a1f;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  padding-left: 12px;
+  padding-right: 12px;
+  height: 40px;
+}
+
+.form-header-nav {
+
+}
+
+.form-heading {
+  color: white;
+  display: block;
+  float: left;
+  margin: 5px;
+}
+
+.form-list {
+  float: right;
+  display: block;
+  list-style: none;
+}
+
+.form-header-li {
+  color: gold;
+  cursor: pointer;
+  display: block;
+  float: left;
+  margin-right: 20px;
+  border-bottom: 4px solid white;
+  padding: 9px 0;
+}
+
+.form-header-button {
+  font-size: 16px;
+  font-family: "Lucida Grande", Tahoma, Arial, sans-serif;
+  cursor: pointer;
+}
+
+.form-manager-section {
+  border: none;
+  margin: 20px;
+  padding: 0 0 1.1em;
+}
+
+.form-name {
+  margin: 6px;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.new-form-button {
+  border-radius: 5px;
+  box-shadow: none;
+  background: #8db817;
+  text-shadow: 1px 1px 1px #719412;
+  color: white;
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 25.2px;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  display: inline-block;
+  padding: 4px 12px;
+  float: right;
+}

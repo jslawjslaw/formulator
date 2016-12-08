@@ -8,7 +8,7 @@ const FormsReducer = (state = {}, action) => {
       const newForm = { [action.form.id]: action.form, errors: [] };
       return merge({}, newForm);
     case RECEIVE_FORMS:
-      return { forms: action.forms };
+      return action.forms;
     case RECEIVE_ERRORS:
       return { forms: null, errors: action.errors };
     default:

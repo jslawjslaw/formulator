@@ -14,14 +14,14 @@ class FormHeader extends React.Component {
 
   render() {
     return (
-      <header>
-        <nav>
-          <h1>Formulator</h1>
-          <ul>
-            <li><Link to={ "/manager" } />Forms</li>
-            <li><Link to={ "/reports" } />Reports</li>
-            <li>
-              <button onClick={ this.handleClick }>Log Out</button>
+      <header className="form-header">
+        <nav className="form-header-nav group">
+          <h1 className="form-heading">Formulator</h1>
+          <ul className="form-list">
+            <li className="form-header-li"><Link to={ "/manager" } />Forms</li>
+            <li className="form-header-li"><Link to={ "/reports" } />Reports</li>
+            <li className="form-header-li">
+              <button className="form-header-button" onClick={ this.handleClick }>Log Out</button>
             </li>
           </ul>
         </nav>
