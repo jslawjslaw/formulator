@@ -1,13 +1,15 @@
 import { connect } from 'react-redux';
 import FormBuilder from './form_builder';
 import { logout } from '../../actions/session_actions';
-import { fetchForm } from '../../actions/form_actions';
+import { fetchForm, updateForm, createForm } from '../../actions/form_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
   const formId = parseInt(ownProps.params.id);
+  const userId = state.session.currentUser.id;
   return {
     formId,
+    userId,
     router: ownProps.router,
     currentForm: state.forms.currentForm
    };
@@ -16,7 +18,9 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     logout: () => dispatch(logout()),
-    fetchForm: (id) => dispatch(fetchForm(id))
+    fetchForm: (id) => dispatch(fetchForm(id)),
+    createForm: (form) => dispatch(createForm(form)),
+    updateForm: (form) => dispatch(updateForm(form))
   };
 };
 

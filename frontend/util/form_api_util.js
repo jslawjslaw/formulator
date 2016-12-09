@@ -1,11 +1,3 @@
-export const receiveForm = (form) => {
-  return $.ajax({
-    method: "POST",
-    url: "/api/forms",
-    data: { form }
-  });
-};
-
 export const fetchForms = () => {
   return $.ajax({
     method: "GET",
@@ -20,8 +12,15 @@ export const fetchForm = (id) => {
   });
 };
 
-export const makePrivate = (form) => {
-  form.private = true;
+export const createForm = (form) => {
+  return $.ajax({
+    method: "POST",
+    url: "/api/forms",
+    data: { form }
+  });
+};
+
+export const updateForm = (form) => {
   return $.ajax({
     method: "PATCH",
     url: `/api/forms/${form.id}`,

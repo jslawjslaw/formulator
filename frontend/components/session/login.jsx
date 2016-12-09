@@ -40,6 +40,10 @@ class Login extends React.Component {
     this.props.processForm(guestUser).then(() => this.props.router.push('/manager'));
   }
 
+  componentDidMount() {
+    this.props.clearErrors();
+  }
+
   render() {
     return(
       <div className="overlay">

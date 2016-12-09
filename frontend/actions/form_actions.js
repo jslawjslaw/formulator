@@ -28,7 +28,18 @@ export const receiveErrors = errors => {
 
 export function createForm(form) {
   return (dispatch) => {
-    return APIUtil.receiveForm(form).then(
+    return APIUtil.createForm(form).then(
+      (form) => dispatch(receiveForm(form)),
+      (err) => dispatch(receiveErrors(err))
+    );
+  };
+}
+
+// this is an update when I'm on the form builder page
+// this needs to receive a single form
+export function updateForm(form) {
+  return (dispatch) => {
+    return APIUtil.updateForm(form).then(
       (form) => dispatch(receiveForm(form)),
       (err) => dispatch(receiveErrors(err))
     );
@@ -44,9 +55,11 @@ export function deleteForm(form) {
   };
 }
 
+// This is an update when I'm on the form manager page
+// This needs to receive all the forms (because I'm on the user's index page)
 export function makePrivate(form) {
   return (dispatch) => {
-    return APIUtil.makePrivate(form).then(
+    return APIUtil.updateForm(form).then(
       (forms) => dispatch(receiveForms(forms)),
       (err) => dispatch(receiveErrors(err))
     );

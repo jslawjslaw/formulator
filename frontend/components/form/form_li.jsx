@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import merge from 'lodash/merge';
 
 class FormLi extends React.Component {
   constructor(props) {
@@ -11,7 +12,8 @@ class FormLi extends React.Component {
   }
 
   makePrivate(e) {
-    this.props.makePrivate(this.props.form);
+    const newForm = merge({}, this.props.form, { private: true });
+    this.props.makePrivate(newForm);
   }
 
   delete(e) {

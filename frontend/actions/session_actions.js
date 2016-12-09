@@ -18,13 +18,17 @@ export const receiveErrors = errors => {
   };
 };
 
-export const clearErrors = () => {
+export const clearErrs = () => {
   return {
-    type: CLEAR_ERRORS,
-    errors
+    type: CLEAR_ERRORS
   };
 };
 
+export function clearErrors() {
+  return (dispatch) => {
+    return dispatch(clearErrs());
+  };
+}
 
 export function signup(user) {
   return (dispatch) => {
@@ -50,11 +54,5 @@ export function login(user) {
       (currentUser) => dispatch(receiveCurrentUser(currentUser)),
       (err) => dispatch(receiveErrors(err))
     );
-  };
-}
-
-export function clearTheErrors() {
-  return (dispatch) => {
-    return dispatch(clearErrors());
   };
 }

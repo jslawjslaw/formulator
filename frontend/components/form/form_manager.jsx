@@ -23,6 +23,7 @@ class FormManager extends React.Component {
           <button className="new-form-button" onClick={ this.handleClick }>+ New Form</button>
         </section>
 
+
         <Searchbar
           forms={ this.props.forms }
           fetchForms={ this.props.fetchForms }

@@ -18,14 +18,16 @@ class Session extends React.Component {
         <Login
           processForm={ this.props.processForm }
           errors={ errors }
-          router={ this.props.router } />
+          router={ this.props.router }
+          clearErrors={ this.props.clearErrors }/>
       );
     } else {
       return(
         <Signup
           processForm={ this.props.processForm }
           errors={ errors }
-          router={ this.props.router } />
+          router={ this.props.router }
+          clearErrors={ this.props.clearErrors }/>
       );
     }
   }
