@@ -48,9 +48,8 @@ class FormBuilder extends React.Component {
         value = false;
       } else {
         value = true;
+      this.setState({ private: value });
       }
-      debugger
-      this.setState({ private: value })
     }
   }
 
@@ -64,7 +63,6 @@ class FormBuilder extends React.Component {
       private: this.state.private,
       id: this.props.formId
     };
-    debugger
 
     if (this.state.button === "Create") {
       this.props.createForm(form);
@@ -74,7 +72,6 @@ class FormBuilder extends React.Component {
   }
 
   render() {
-    debugger
     return (
       <div>
         <FormHeader logout={ this.props.logout } router={ this.props.router } />
