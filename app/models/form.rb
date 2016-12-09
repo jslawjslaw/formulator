@@ -15,6 +15,7 @@
 class Form < ActiveRecord::Base
   validates :title, :description, :user, :permanent_link, presence: true
   validates_inclusion_of :private, in: [true, false]
+  after_initialize :ensure_permanent_link!
 
   belongs_to(
     :user,
@@ -23,4 +24,15 @@ class Form < ActiveRecord::Base
     foreign_key: :author_id
   )
 
+  def self.generate_permanent_link
+    SecureRandom.urlsafe_base64(16)
+  end
+
+  def ensure_permanent_link!
+    if self.permanent_link == ""
+      self.permanent_link = "/form/" + Form.generate_permanent_link
+    else
+      self.permanent_link
+    end
+  end
 end

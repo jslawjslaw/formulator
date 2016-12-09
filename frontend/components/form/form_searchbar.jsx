@@ -37,7 +37,7 @@ class Searchbar extends React.Component {
   render() {
     let forms = this.matches().map((form, idx) => {
       return (
-        <li className="form-lis" key={idx}>
+        <li className="form-lis group" key={idx}>
           <FormLi
             form={ form }
             deleteForm={ this.props.deleteForm }
@@ -51,8 +51,11 @@ class Searchbar extends React.Component {
     return (
       <div className="search-content">
         <section className="search-section group">
-          <label className="search-label">Search
-            <input onChange={ this.handleChange } value={ this.state.input } />
+          <label className="search-label group">Search
+            <input
+              className="search-input"
+              onChange={ this.handleChange }
+              value={ this.state.input } />
           </label>
         </section>
         <section>

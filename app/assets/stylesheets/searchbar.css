@@ -4,6 +4,7 @@
   border-radius: 5px;
   background: #E5F0FF;
   border: 1px solid #D5DFED;
+  margin: 0 100px;
 }
 
 .search-section {
@@ -20,7 +21,14 @@
 }
 
 .search-label {
-  float: left;
+  display: inline-block;
+  width: 300px;
+}
+
+.search-input {
+  display: inline-block;
+  margin-left: 20px;
+  height: 20px;
 }
 
 .forms-list {
@@ -30,4 +38,46 @@
 .form-lis {
   position: relative;
   padding: 4px 0 4px 0;
+}
+
+.li-holder {
+  box-sizing: content-box;
+  position: relative;
+  padding: 0 20px 10px 20px;
+  background-color: white;
+  border-radius: 5px;
+  width: 800px;
+  margin: 20px auto 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.li-form-title {
+  float: left;
+  display: block;
+  padding-top: 7px;
+  margin: 0;
+  font-size: 20px;
+}
+
+.li-ul {
+  box-sizing: content-box;
+  list-style: none;
+  display: inline-block;
+  vertical-align: center;
+  margin-top: 10px;
+  position: relative;
+  margin-right: 10px;
+}
+
+.li-buttons {
+  display: inline-block;
+}
+
+.form-search-li-button {
+  font-size: 16px;
+  color: #0000c1;
+  text-decoration: none;
+  margin-left: 30px;
+  cursor: pointer;
 }

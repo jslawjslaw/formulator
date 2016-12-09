@@ -35,7 +35,6 @@ class FormBuilder extends React.Component {
   }
 
   handleChange(e) {
-    e.preventDefault();
     let newState = Object.assign({}, this.state);
 
     if (e.currentTarget.name === "title") {
@@ -48,8 +47,8 @@ class FormBuilder extends React.Component {
         value = false;
       } else {
         value = true;
-      this.setState({ private: value });
       }
+      this.setState({ private: value });
     }
   }
 
@@ -65,7 +64,10 @@ class FormBuilder extends React.Component {
     };
 
     if (this.state.button === "Create") {
-      this.props.createForm(form);
+      if (this.state.private === "") {
+        form.private = false;
+      }
+      this.props.createForm(form).then(() => this.props.router.push('/manager'));
     } else {
       this.props.updateForm(form);
     }
@@ -73,39 +75,48 @@ class FormBuilder extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="stage group">
         <FormHeader logout={ this.props.logout } router={ this.props.router } />
         <h1>Form Builder</h1>
 
-        <form>
-          <label>Form Name
+        <section className="settings-pane">
+          <form className="form-settings-pane">
+            <label className="form-settings-label">Form Name
+              <input
+                className="form-settings-input-text"
+                type="text"
+                name="title"
+                onChange={ this.handleChange }
+                value={ this.state.title } />
+            </label>
+            <label className="form-settings-label">Description
+              <input
+                className="form-settings-input-textarea"
+                type="textarea"
+                name="description"
+                onChange={ this.handleChange }
+                value={ this.state.description } />
+            </label>
             <input
-              type="text"
-              name="title"
-              onChange={ this.handleChange }
-              value={ this.state.title } />
-          </label>
-          <label>Description
-            <input
-              type="textarea"
-              name="description"
-              onChange={ this.handleChange }
-              value={ this.state.description } />
-          </label>
-          <input
-            type="radio"
-            name="private"
-            value={ false }
-            checked={ !this.state.private }
-            onChange={ this.handleChange }/> Public
-            <input
+              className="form-settings-radio"
               type="radio"
               name="private"
-              value={ true }
-              checked={ this.state.private }
-              onChange={ this.handleChange }/> Private
-            <button onClick={ this.handleSubmit }>{ this.state.button }</button>
-        </form>
+              value={ false }
+              checked={ !this.state.private }
+              onChange={ this.handleChange }/><span> Public</span>
+              <br />
+              <input
+                className="form-settings-radio"
+                type="radio"
+                name="private"
+                value={ true }
+                checked={ this.state.private }
+                onChange={ this.handleChange }/><span> Private</span>
+              <button
+                className="form-settings-button"
+                onClick={ this.handleSubmit }>{ this.state.button }</button>
+          </form>
+        </section>
       </div>
     );
   }

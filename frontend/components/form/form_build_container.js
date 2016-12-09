@@ -5,7 +5,10 @@ import { fetchForm, updateForm, createForm } from '../../actions/form_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
-  const formId = parseInt(ownProps.params.id);
+  let formId;
+  if (ownProps.params.id) {
+    formId = parseInt(ownProps.params.id);
+  }
   const userId = state.session.currentUser.id;
   return {
     formId,

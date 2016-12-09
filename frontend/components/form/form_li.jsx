@@ -28,12 +28,12 @@ class FormLi extends React.Component {
 
   render() {
     return (
-      <div>
-        <h2>{ this.props.form.title }</h2>
-        <ul>
-          <li><button onClick={ this.linkToBuilder }>Edit</button></li>
-          <li><button onClick={ this.makePrivate }>Make Private</button></li>
-          <li><button onClick={ this.delete }>Delete</button></li>
+      <div className="li-holder group">
+        <h2 className="li-form-title">{ this.props.form.title }</h2>
+        <ul className="li-ul group">
+          <li className="li-buttons"><button className="form-search-li-button" onClick={ this.linkToBuilder }>Edit</button></li>
+          <li className="li-buttons"><button className="form-search-li-button" onClick={ this.makePrivate }>Make Private</button></li>
+          <li className="li-buttons"><button className="form-search-li-button" onClick={ this.delete }>Delete</button></li>
         </ul>
       </div>
     );
