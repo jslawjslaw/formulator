@@ -20,6 +20,8 @@
   padding: 25px;
   margin: auto auto;
   width: 835px;
+  position: relative;
+  top: 200px;
 }
 
 .innerbox {
@@ -81,6 +83,16 @@ form label {
   float: right;
 }
 
+.signup-link-section:hover {
+  border-color: #D9EFC2;
+  background: #F7FFEF;
+}
+
+.signup-link-section:hover .red-div{
+  border-color: #D9EFC2;
+  background: #F7FFEF;
+}
+
 .red-div {
   border-bottom: 2px solid #EFCA4A;
 }
@@ -107,6 +119,7 @@ form label {
   border-bottom: 1px solid #bfbfbf;
   background: -webkit-linear-gradient(top, #FFF, #E9E9E9);
   font-size: 12px;
+  font-weight: bold;
   color: #464646;
   cursor: pointer;
   text-decoration: none;
@@ -114,4 +127,12 @@ form label {
   background-clip: padding-box;
   padding: 5px;
   box-shadow: rgba(0,0,0,0.1) 0px 1px 1px;
+}
+
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
 }

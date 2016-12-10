@@ -156,7 +156,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  annotate
+  annotate (~> 2.7.1)
   bcrypt (~> 3.1.7)
   byebug
   coffee-rails (~> 4.2)
@@ -164,7 +164,7 @@ DEPENDENCIES
   jquery-rails
   listen (~> 3.0.5)
   newrelic_rpm
-  pg (~> 0.18)
+  pg (~> 0.19.0)
   puma (~> 3.0)
   rails (~> 5.0.0, >= 5.0.0.1)
   sass-rails (~> 5.0)

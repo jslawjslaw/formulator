@@ -75,11 +75,15 @@
 }
 
 .home-section-link {
-  background: #7fcde8;
+  background: #69C5E4;
   border: 1px solid #b7e3f2;
   text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
   padding: 10px;
   display: block;
   margin: 30px auto;
   width: 100px;
+}
+
+.home-section-link:hover {
+  background: #7fcde8;
 }

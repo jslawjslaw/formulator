@@ -1,10 +1,10 @@
 .search-content {
-  margin: 10px 0 12px 0;
   padding: 0 0 10px 0;
   border-radius: 5px;
   background: #E5F0FF;
   border: 1px solid #D5DFED;
-  margin: 0 100px;
+  margin: 0 auto;
+  width: 900px;
 }
 
 .search-section {

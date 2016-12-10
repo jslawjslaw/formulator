@@ -62,9 +62,9 @@ class Login extends React.Component {
               <label className="login-label">Password
                 <input className="login-input" type="password" name="password" onChange={ this.handleChange }></input>
               </label>
-              <button className="button" onClick={ this.handleSubmit }>Log In</button>
-              <button className="button" onClick={ this.handleGuest }>Guest Login</button>
-              <button className="button" onClick={ this.handleCancel }>Cancel</button>
+              <button className="button green" onClick={ this.handleSubmit }>Log In</button>
+              <button className="button green" onClick={ this.handleGuest }>Guest Login</button>
+              <button className="button red" onClick={ this.handleCancel }>X Cancel</button>
             </form>
 
             <Link to={"/signup"}>

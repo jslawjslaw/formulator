@@ -24,6 +24,13 @@ class Form < ActiveRecord::Base
     foreign_key: :author_id
   )
 
+  has_many(
+    :fields,
+    class_name: :Field,
+    primary_key: :id,
+    foreign_key: :form_id
+  )
+
   def self.generate_permanent_link
     SecureRandom.urlsafe_base64(16)
   end

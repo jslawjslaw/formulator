@@ -20,6 +20,8 @@
   width: 600px;
   margin: 0 100px;
   background-color: white;
+  border: 1px solid #ede8e8;
+  border-radius: 5px;
 }
 
 .signup-label {
@@ -32,17 +34,28 @@
   display: block;
   width: 500px;
   margin-top: 10px;
+  height: 2.5em;
+  border: 1px solid #ede8e8;
+}
+
+.signup-input:focus {
+  border: 1px solid #69C5E4;
 }
 
 .signup-button {
   display: inline-block;
-  padding: 15px 32px;
+  padding: 12px 32px;
   text-align: center;
+  width: 440px;
   background-color: #61e064;
   color: white;
-  font-size: 16px;
+  font-size: 20px;
   margin-left: 50px;
   cursor: pointer;
+}
+
+.signup-button:hover {
+  background-color: #4cdc4f;
 }
 
 .errors {
