@@ -1,5 +1,11 @@
 class Api::FieldsController < ApplicationController
   def create
+    @field = Field.create(field_params)
+    if @field.save
+      render :show
+    else
+      render json: @field.errors.full_messages, status: 422
+    end
   end
 
   def index

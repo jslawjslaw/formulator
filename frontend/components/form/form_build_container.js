@@ -14,7 +14,8 @@ const mapStateToProps = (state, ownProps) => {
     formId,
     userId,
     router: ownProps.router,
-    currentForm: state.forms.currentForm
+    currentForm: state.forms.currentForm,
+    errors: state.forms.errors
    };
 };
 

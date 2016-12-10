@@ -1,8 +1,7 @@
 import * as APIUtil from '../util/session_api_util';
+import { receiveErrors } from './error_actions';
 
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
-export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
-export const CLEAR_ERRORS = "CLEAR_ERRORS";
 
 export const receiveCurrentUser = currentUser => {
   return {
@@ -10,25 +9,6 @@ export const receiveCurrentUser = currentUser => {
     currentUser
   };
 };
-
-export const receiveErrors = errors => {
-  return {
-    type: RECEIVE_ERRORS,
-    errors
-  };
-};
-
-export const clearErrs = () => {
-  return {
-    type: CLEAR_ERRORS
-  };
-};
-
-export function clearErrors() {
-  return (dispatch) => {
-    return dispatch(clearErrs());
-  };
-}
 
 export function signup(user) {
   return (dispatch) => {

@@ -5,8 +5,8 @@ import Signup from './signup';
 class Session extends React.Component {
   render() {
     let errors;
-    if (this.props.errors.responseJSON) {
-      errors = this.props.errors.responseJSON.map( (error, idx) => {
+    if (this.props.errors) {
+      errors = this.props.errors.map( (error, idx) => {
         return <li className="error-li" key={idx}>{error}</li>;
       });
     } else {

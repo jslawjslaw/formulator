@@ -5,7 +5,7 @@ import merge from 'lodash/merge';
 class FormBuilder extends React.Component {
   constructor(props) {
     super(props);
-
+      debugger
     const button = (props.route.path === "/build") ? "Create" : "Update";
 
     this.state = {

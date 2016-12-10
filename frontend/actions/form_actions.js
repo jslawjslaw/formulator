@@ -1,9 +1,8 @@
 import * as APIUtil from '../util/form_api_util';
+import { receiveErrors } from './error_actions';
 
 export const RECEIVE_FORM = "RECEIVE_FORM";
 export const RECEIVE_FORMS = "RECEIVE_FORMS";
-export const DELETE_FORM = "DELETE_FORM";
-export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
 
 export const receiveForm = currentForm => {
   return {
@@ -16,13 +15,6 @@ export const receiveForms = forms => {
   return {
     type: RECEIVE_FORMS,
     forms
-  };
-};
-
-export const receiveErrors = errors => {
-  return {
-    type: RECEIVE_ERRORS,
-    errors
   };
 };
 
