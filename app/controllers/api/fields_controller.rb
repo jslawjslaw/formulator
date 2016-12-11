@@ -23,6 +23,6 @@ class Api::FieldsController < ApplicationController
 
   private
   def field_params
-    params.require(:field).permit(:label, :type, :description, :ord, :form_id)
+    params.require(:field).permit(:label, :field_type, :user_instruction, :ord, :form_id)
   end
 end

@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161210141234) do
+ActiveRecord::Schema.define(version: 20161210185159) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "fields", force: :cascade do |t|
-    t.string   "type",             null: false
+    t.string   "field_type",       null: false
     t.string   "label",            null: false
     t.string   "user_instruction"
     t.integer  "form_id",          null: false

@@ -1,4 +1,5 @@
 import { RECEIVE_FORMS, RECEIVE_FORM } from '../actions/form_actions';
+import { RECEIVE_FIELDS, RECEIVE_FIELD } from '../actions/field_actions';
 import merge from 'lodash/merge';
 
 const _nullForms = Object.freeze({
@@ -17,6 +18,10 @@ const FormsReducer = (state = _nullForms, action) => {
     case RECEIVE_FORMS:
       const allForms = action.forms;
       return merge({}, _nullForms, { allForms });
+    case RECEIVE_FIELD:
+      newState = Object.assign({}, state);
+      newState.currentForm.fields.push(action.field)
+      return newState;
     default:
       return state;
   }

@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import FormBuilder from './form_builder';
 import { logout } from '../../actions/session_actions';
 import { fetchForm, updateForm, createForm } from '../../actions/form_actions';
-
+import { createField } from '../../actions/field_actions';
 
 const mapStateToProps = (state, ownProps) => {
   let formId;
@@ -10,9 +10,12 @@ const mapStateToProps = (state, ownProps) => {
     formId = parseInt(ownProps.params.id);
   }
   const userId = state.session.currentUser.id;
+  const panes = ['formSettings', 'addField' ];
+
   return {
     formId,
     userId,
+    panes,
     router: ownProps.router,
     currentForm: state.forms.currentForm,
     errors: state.forms.errors
@@ -24,7 +27,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     logout: () => dispatch(logout()),
     fetchForm: (id) => dispatch(fetchForm(id)),
     createForm: (form) => dispatch(createForm(form)),
-    updateForm: (form) => dispatch(updateForm(form))
+    updateForm: (form) => dispatch(updateForm(form)),
+    createField: (field) => dispatch(createField(field))
   };
 };
 
