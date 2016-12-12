@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import FormBuilder from './form_builder';
 import { logout } from '../../actions/session_actions';
 import { fetchForm, updateForm, createForm } from '../../actions/form_actions';
-import { createField } from '../../actions/field_actions';
+import { createField, updateField, deleteField } from '../../actions/field_actions';
 
 const mapStateToProps = (state, ownProps) => {
   let formId;
@@ -28,7 +28,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     fetchForm: (id) => dispatch(fetchForm(id)),
     createForm: (form) => dispatch(createForm(form)),
     updateForm: (form) => dispatch(updateForm(form)),
-    createField: (field) => dispatch(createField(field))
+    createField: (field, formId) => dispatch(createField(field, formId)),
+    updateField: (field, formId) => dispatch(updateField(field, formId)),
+    deleteField: (fieldId, formId) => dispatch(deleteField(fieldId, formId))
   };
 };
 

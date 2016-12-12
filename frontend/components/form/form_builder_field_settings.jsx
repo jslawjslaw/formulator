@@ -1,7 +1,7 @@
 import React from 'react';
 import merge from 'lodash/merge';
 
-class FieldTab extends React.Component {
+class fieldSettingsTab extends React.Component {
   constructor(props) {
     super(props);
 
@@ -42,17 +42,20 @@ class FieldTab extends React.Component {
           <input
             type="text"
             name="fieldType"
-            onChange={ this.handleChange }/>
+            onChange={ this.handleChange }
+            value={ this.state.field_type }/>
         </label>
         <label>Label
           <input
             name="label"
-            type="text" />
+            type="text"
+            value={ this.state.label }/>
         </label>
         <label>User Instructions
           <input
             name="userInstructions"
-            type="textarea" />
+            type="textarea"
+            value={ this.state.user_instructions }/>
         </label>
         <button
           className="form-settings-button"
@@ -62,4 +65,4 @@ class FieldTab extends React.Component {
   }
 }
 
-export default FieldTab;
+export default fieldSettingsTab;

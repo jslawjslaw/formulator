@@ -18,10 +18,28 @@ export const receiveFields = fields => {
   };
 };
 
-export function createField(field) {
+export function createField(field, formId) {
   return (dispatch) => {
-    return APIUtil.createField(field).then(
+    return APIUtil.createField(field, formId).then(
       (field) => dispatch(receiveField(field)),
+      (err) => dispatch(receiveErrors(err))
+    );
+  };
+}
+
+export function updateField(field, formId) {
+  return (dispatch) => {
+    return APIUtil.updateField(field, formId).then(
+      (field) => dispatch(receiveField(field)),
+      (err) => dispatch(receiveErrors(err))
+    );
+  };
+}
+
+export function deleteField(fieldId, formId) {
+  return (dispatch) => {
+    return APIUtil.deleteField(fieldId, formId).then(
+      (fields) => dispatch(receiveFields(fields)),
       (err) => dispatch(receiveErrors(err))
     );
   };

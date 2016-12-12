@@ -19,14 +19,14 @@ class FormSettings extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillMount() {
     this.setState({
-      title: nextProps.currentForm.title,
-      description: nextProps.currentForm.description,
-      private: nextProps.currentForm.private,
-      permanent_link: nextProps.currentForm.permanent_link,
-      author_id: nextProps.currentForm.author_id
-    })
+      title: this.props.currentForm.title,
+      description: this.props.currentForm.description,
+      private: this.props.currentForm.private,
+      permanent_link: this.props.currentForm.permanent_link,
+      author_id: this.props.currentForm.author_id
+    });
   }
 
   handleChange(e) {

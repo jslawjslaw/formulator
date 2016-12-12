@@ -15,10 +15,15 @@ class Api::FieldsController < ApplicationController
   end
 
   def update
-
   end
 
   def destroy
+    @field = Field.find(params[:id])
+    form_id = @field.form_id
+    form = Form.find(form_id)
+    @field.destroy
+    @fields = form.fields
+    render :index
   end
 
   private

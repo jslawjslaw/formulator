@@ -73,3 +73,21 @@
 .form-settings-button:hover {
   box-shadow: rgba(0,0,0,0.25) 1px 1px 3px;
 }
+
+.add-field-button:hover {
+  background: #DFEEA3;
+  border: 1px solid #C6D880;
+}
+
+.add-field-button {
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1);
+  border-radius: 9px;
+  font-size: 95%;
+  text-align: center;
+  padding: 4px 0 4px 34px;
+  display: inline-block;
+  position: relative;
+  background-color: #FFF;
+  margin:5px;
+  width: 100px;
+}

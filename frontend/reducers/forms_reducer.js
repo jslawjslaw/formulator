@@ -22,6 +22,10 @@ const FormsReducer = (state = _nullForms, action) => {
       newState = Object.assign({}, state);
       newState.currentForm.fields.push(action.field)
       return newState;
+    case RECEIVE_FIELDS:
+      newState = Object.assign({}, state);
+      newState.currentForm.fields = action.fields;
+      return newState;
     default:
       return state;
   }
