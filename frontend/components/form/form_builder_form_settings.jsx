@@ -10,6 +10,7 @@ class FormSettings extends React.Component {
       title: "",
       description: "",
       private: "",
+      choices: "",
       permanent_link: "",
       author_id: props.userId,
       button
@@ -24,6 +25,7 @@ class FormSettings extends React.Component {
       title: this.props.currentForm.title,
       description: this.props.currentForm.description,
       private: this.props.currentForm.private,
+      choices: this.props.currentForm.choices,
       permanent_link: this.props.currentForm.permanent_link,
       author_id: this.props.currentForm.author_id
     });

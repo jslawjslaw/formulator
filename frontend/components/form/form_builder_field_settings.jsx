@@ -9,15 +9,27 @@ class fieldSettingsTab extends React.Component {
       label: "",
       userInstruction: "",
       ord: "",
+      choices: "",
       fieldType: "",
       formId: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
-    this.createField = this.createField.bind(this);
+    this.updateField = this.updateField.bind(this);
   }
 
-  createField(e) {
+  componentWillMount() {
+    this.setState({
+      label: this.props.currentForm.fields[0].label,
+      userInstruction: this.props.currentForm.fields[0].user_instruction,
+      ord: 0,
+      choices: this.props.currentForm.fields[0].choices,
+      fieldType: this.props.currentForm.fields[0].field_type,
+      formId: this.props.formId
+    });
+  }
+
+  updateField(e) {
     e.preventDefault();
     const field = {
       label: this.state.label,
@@ -27,12 +39,16 @@ class fieldSettingsTab extends React.Component {
       form_id: this.state.formId
     };
 
-    this.props.createField(field);
+    this.props.updateField(field, this.state.form_id);
   }
 
   handleChange(e) {
     e.preventDefault();
-
+    if (e.currentTarget.name === "label") {
+      this.setState({ label: e.currentTarget.value });
+    } else if (e.currentTarget.name === "userInstructions") {
+      this.setState({ userInstruction: e.currentTarget.value });
+    }
   }
 
   render() {
@@ -42,24 +58,26 @@ class fieldSettingsTab extends React.Component {
           <input
             type="text"
             name="fieldType"
-            onChange={ this.handleChange }
-            value={ this.state.field_type }/>
+            readOnly
+            defaultValue={ this.state.fieldType }/>
         </label>
         <label>Label
           <input
             name="label"
             type="text"
+            onChange={ this.handleChange }
             value={ this.state.label }/>
         </label>
         <label>User Instructions
           <input
             name="userInstructions"
             type="textarea"
-            value={ this.state.user_instructions }/>
+            onChange={ this.handleChange }
+            value={ this.state.userInstructions }/>
         </label>
         <button
           className="form-settings-button"
-          onClick={ this.createField }>Create Field</button>
+          onClick={ this.updateField }>Update Field</button>
       </form>
     );
   }

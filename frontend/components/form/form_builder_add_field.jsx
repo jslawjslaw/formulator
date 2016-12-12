@@ -8,6 +8,7 @@ class AddField extends React.Component {
       label: "placeholder",
       field_type: "",
       user_instruction: "",
+      choices: "",
       form_id: props.formId,
       ord: props.currentForm.fields.length
     }
@@ -26,11 +27,11 @@ class AddField extends React.Component {
         this.props.createField(this.state, this.props.formId);
       });
     } else if(e.currentTarget.name === "multiple-choice") {
-      this.setState({ field_type: "radio" }, () => {
+      this.setState({ field_type: "radio", choices: "Choice 1^Choice 2^Choice 3^" }, () => {
         this.props.createField(this.state, this.props.formId);
       });
     } else if(e.currentTarget.name === "dropdown") {
-      this.setState({ field_type: "select" }, () => {
+      this.setState({ field_type: "select", choices: "Choice 1^Choice 2^Choice 3^" }, () => {
         this.props.createField(this.state, this.props.formId);
       });
     } else if(e.currentTarget.name === "paragraph") {
