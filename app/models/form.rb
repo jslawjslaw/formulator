@@ -28,7 +28,8 @@ class Form < ActiveRecord::Base
     :fields,
     class_name: :Field,
     primary_key: :id,
-    foreign_key: :form_id
+    foreign_key: :form_id,
+    dependent: :destroy
   )
 
   def self.generate_permanent_link
@@ -36,10 +37,9 @@ class Form < ActiveRecord::Base
   end
 
   def ensure_permanent_link!
-    if self.permanent_link == ""
+    unless self.permanent_link
       self.permanent_link = "/form/" + Form.generate_permanent_link
-    else
-      self.permanent_link
     end
+    self.permanent_link
   end
 end

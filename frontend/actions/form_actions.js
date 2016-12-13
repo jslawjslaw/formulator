@@ -4,10 +4,11 @@ import { receiveErrors } from './error_actions';
 export const RECEIVE_FORM = "RECEIVE_FORM";
 export const RECEIVE_FORMS = "RECEIVE_FORMS";
 
-export const receiveForm = currentForm => {
+export const receiveForm = (currentForm, router) => {
   return {
     type: RECEIVE_FORM,
-    currentForm
+    currentForm,
+    router
   };
 };
 
@@ -18,17 +19,18 @@ export const receiveForms = forms => {
   };
 };
 
-export function createForm(form) {
+//
+export function createForm(form, router) {
   return (dispatch) => {
     return APIUtil.createForm(form).then(
-      (form) => dispatch(receiveForm(form)),
+      (form) => dispatch(receiveForm(form, router)),
       (err) => dispatch(receiveErrors(err))
     );
   };
 }
 
-// this is an update when I'm on the form builder page
-// this needs to receive a single form
+// This is an update when I'm on the form builder page
+// This needs to receive a single form
 export function updateForm(form) {
   return (dispatch) => {
     return APIUtil.updateForm(form).then(
@@ -49,9 +51,9 @@ export function deleteForm(form) {
 
 // This is an update when I'm on the form manager page
 // This needs to receive all the forms (because I'm on the user's index page)
-export function makePrivate(form) {
+export function makePrivateOrPublic(form, render) {
   return (dispatch) => {
-    return APIUtil.updateForm(form).then(
+    return APIUtil.updateForm(form, render).then(
       (forms) => dispatch(receiveForms(forms)),
       (err) => dispatch(receiveErrors(err))
     );

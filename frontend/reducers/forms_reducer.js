@@ -4,7 +4,7 @@ import merge from 'lodash/merge';
 
 const _nullForms = Object.freeze({
   allForms: {},
-  currentForm: {}
+  currentForm: { fields: [] }
 });
 
 const FormsReducer = (state = _nullForms, action) => {
@@ -20,7 +20,7 @@ const FormsReducer = (state = _nullForms, action) => {
       return merge({}, _nullForms, { allForms });
     case RECEIVE_FIELD:
       newState = Object.assign({}, state);
-      newState.currentForm.fields.push(action.field)
+      newState.currentForm.fields.push(action.field);
       return newState;
     case RECEIVE_FIELDS:
       newState = Object.assign({}, state);

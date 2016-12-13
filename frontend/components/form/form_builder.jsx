@@ -1,40 +1,28 @@
 import React from 'react';
 import FormHeader from './form_header';
 import FormSettingsTab from './form_builder_form_settings';
-import FieldTab from './form_builder_field_settings';
+import FieldSettingsTab from './form_builder_field_settings';
 import Form from './form';
 import AddField from './form_builder_add_field';
 import merge from 'lodash/merge';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 class FormBuilder extends React.Component {
-  constructor(props) {
-    super(props);
 
-    this.state = {
-      currentForm: ""
-    };
-  }
-
-  componentWillMount() {
-    if (this.props.formId) {
-      this.props.fetchForm(this.props.formId).then(({ currentForm }) => {
-        this.setState({
-          currentForm
-        });
-      });
+  componentDidMount() {
+    if (this.props.params.formId) {
+      this.props.fetchForm(this.props.params.formId);
     }
   }
 
   render() {
-    let pane = this.props.panes[this.state.selectedPane];
     return(
       <div className="stage group">
         <FormHeader logout={ this.props.logout } router={ this.props.router } />
-        <h1>Form Builder</h1>
+        <h1 className="form-builder-heading">Form Builder</h1>
 
         <section className="settings-pane">
-          <Tabs selectedIndex={0}>
+          <Tabs selectedIndex={ this.props.tabIndex }>
             <TabList>
               <Tab>Form Settings</Tab>
               <Tab>Add Field</Tab>
@@ -44,30 +32,32 @@ class FormBuilder extends React.Component {
             <TabPanel>
               <FormSettingsTab
                 userId={ this.props.userId }
-                formId={ this.props.formId }
                 currentForm={ this.props.currentForm }
                 createForm={ this.props.createForm }
-                updateForm={ this.props.updateForm }/>
+                updateForm={ this.props.updateForm }
+                router={ this.props.router }/>
             </TabPanel>
 
             <TabPanel>
               <AddField
                 createField={ this.props.createField }
                 currentForm={ this.props.currentForm }
-                formId={ this.props.formId } />
+                changeTabIndex={ this.props.changeTabIndex }/>
             </TabPanel>
 
             <TabPanel>
-              <FieldTab
+              <FieldSettingsTab
                 updateField={ this.props.updateField }
                 currentForm={ this.props.currentForm }
                 deleteField={ this.props.deleteField }
-                formId={ this.props.formId } />
+                fieldIndex={ this.props.fieldIndex }/>
             </TabPanel>
           </Tabs>
         </section>
 
-        <Form currentForm={ this.props.currentForm }/>
+        <Form
+          changeFieldIndex={ this.props.changeFieldIndex }
+          currentForm={ this.props.currentForm }/>
       </div>
     );
   }

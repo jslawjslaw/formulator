@@ -32,7 +32,7 @@ const Root = ({ store }) => {
           <Route path="/signup" component={ SessionContainer } />
         </Route>
         <Route path="/manager" onEnter={ ensureLoggedIn } component={ FormManagerContainer } />
-        <Route path="/build/:id" onEnter={ ensureLoggedIn } component={ FormBuildContainer } />
+        <Route path="/build/:formId" onEnter={ ensureLoggedIn } component={ FormBuildContainer } />
         <Route path="/build" onEnter={ ensureLoggedIn } component={ FormBuildContainer } />
       </Router>
     </Provider>

@@ -41,7 +41,7 @@ class Searchbar extends React.Component {
           <FormLi
             form={ form }
             deleteForm={ this.props.deleteForm }
-            makePrivate={ this.props.makePrivate }
+            updateForm={ this.props.updateForm }
             fetchForm={ this.props.fetchForm }
             router={ this.props.router }/>
         </li>

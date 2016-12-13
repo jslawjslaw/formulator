@@ -3,6 +3,7 @@ import { receiveErrors } from './error_actions';
 
 export const RECEIVE_FIELD = "RECEIVE_FIELD";
 export const RECEIVE_FIELDS = "RECEIVE_FIELDS";
+export const RECEIVE_FIELD_INDEX = "RECEIVE_FIELD_INDEX";
 
 export const receiveField = field => {
   return {
@@ -13,32 +14,46 @@ export const receiveField = field => {
 
 export const receiveFields = fields => {
   return {
-    type: RECEIVE_FORMS,
+    type: RECEIVE_FIELDS,
     fields
   };
 };
 
-export function createField(field, formId) {
+export const receiveFieldIndex = index => {
+  return {
+    type: RECEIVE_FIELD_INDEX,
+    index
+  };
+};
+
+
+export function changeFieldIndex(index) {
   return (dispatch) => {
-    return APIUtil.createField(field, formId).then(
+    dispatch(receiveFieldIndex(index));
+  };
+}
+
+export function createField(field) {
+  return (dispatch) => {
+    return APIUtil.createField(field).then(
       (field) => dispatch(receiveField(field)),
       (err) => dispatch(receiveErrors(err))
     );
   };
 }
 
-export function updateField(field, formId) {
+export function updateField(field) {
   return (dispatch) => {
-    return APIUtil.updateField(field, formId).then(
-      (field) => dispatch(receiveField(field)),
+    return APIUtil.updateField(field).then(
+      (fields) => dispatch(receiveFields(fields)),
       (err) => dispatch(receiveErrors(err))
     );
   };
 }
 
-export function deleteField(fieldId, formId) {
+export function deleteField(field) {
   return (dispatch) => {
-    return APIUtil.deleteField(fieldId, formId).then(
+    return APIUtil.deleteField(field).then(
       (fields) => dispatch(receiveFields(fields)),
       (err) => dispatch(receiveErrors(err))
     );

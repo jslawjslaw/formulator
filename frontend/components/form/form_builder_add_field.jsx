@@ -9,7 +9,8 @@ class AddField extends React.Component {
       field_type: "",
       user_instruction: "",
       choices: "",
-      form_id: props.formId,
+      id: "",
+      form_id: props.currentForm.id,
       ord: props.currentForm.fields.length
     }
 
@@ -20,23 +21,23 @@ class AddField extends React.Component {
     e.preventDefault();
     if (e.currentTarget.name === "single-line-text") {
       this.setState({ field_type: "text" }, () => {
-        this.props.createField(this.state, this.props.formId);
+        this.props.createField(this.state).then(() => this.props.changeTabIndex(2));
       });
     } else if(e.currentTarget.name === "checkboxes") {
       this.setState({ field_type: "checkbox" }, () => {
-        this.props.createField(this.state, this.props.formId);
+        this.props.createField(this.state).then(() => this.props.changeTabIndex(2));
       });
     } else if(e.currentTarget.name === "multiple-choice") {
       this.setState({ field_type: "radio", choices: "Choice 1^Choice 2^Choice 3^" }, () => {
-        this.props.createField(this.state, this.props.formId);
+        this.props.createField(this.state).then(() => this.props.changeTabIndex(2));
       });
     } else if(e.currentTarget.name === "dropdown") {
       this.setState({ field_type: "select", choices: "Choice 1^Choice 2^Choice 3^" }, () => {
-        this.props.createField(this.state, this.props.formId);
+        this.props.createField(this.state).then(() => this.props.changeTabIndex(2));
       });
     } else if(e.currentTarget.name === "paragraph") {
       this.setState({ field_type: "textarea" }, () => {
-        this.props.createField(this.state, this.props.formId);
+        this.props.createField(this.state).then(() => this.props.changeTabIndex(2));
       });
     }
   }

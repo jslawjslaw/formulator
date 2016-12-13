@@ -1,22 +1,22 @@
-export const createField = (field, formId) => {
+export const createField = (field) => {
   return $.ajax({
     method: "POST",
-    url: `/api/forms/${formId}/fields`,
+    url: `/api/forms/${field.form_id}/fields`,
     data: { field }
   });
 };
 
-export const updateField = (field, formId) => {
+export const updateField = (field) => {
   return $.ajax({
     method: "PATCH",
-    url: `/api/forms/${formId}/fields/${field.id}`,
+    url: `/api/forms/${field.form_id}/fields/${field.id}`,
     data: { field }
   });
 };
 
-export const deleteField = (fieldId, formId) => {
+export const deleteField = (field) => {
   return $.ajax({
     method: "DELETE",
-    url: `/api/forms/${formId}/fields/${field.id}`
+    url: `/api/forms/${field.form_id}/fields/${field.id}`
   });
 }

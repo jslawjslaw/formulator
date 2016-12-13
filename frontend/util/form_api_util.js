@@ -20,11 +20,11 @@ export const createForm = (form) => {
   });
 };
 
-export const updateForm = (form) => {
+export const updateForm = (form, render) => {
   return $.ajax({
     method: "PATCH",
     url: `/api/forms/${form.id}`,
-    data: { form }
+    data: { form, render }
   });
 };
 

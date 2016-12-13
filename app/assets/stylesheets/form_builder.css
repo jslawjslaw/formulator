@@ -5,26 +5,32 @@
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
+
 .settings-pane {
   height: auto;
   min-height: 500px;
   width: 370px;
   float: left;
   margin: 0;
-  padding: 0;
   background-color: #E7FFCF;
   border-right: 1px solid #C2EF95;
   border-top: 1px solid #C2EF95;
   padding-left: 5px;
 }
 
+.form-builder-heading {
+  margin: 26px 26px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
 .form-settings-label {
   color: #333;
-  font-size: 11px;
+  font-size: 12px;
   text-align: left;
   font-weight: bold;
   line-height: 150%;
-  margin: 0;
+  margin-bottom: 20px;
   padding: 0 0 3px 0;
   border: none;
   display: block;
@@ -58,8 +64,8 @@
 
 .form-settings-button {
   font-weight: bold;
-  display: inline-block;
-  margin: 0 .7em 0 0;
+  display: block;
+  margin-left: 35%;
   padding: 5px 10px 6px 10px;
   border: 1px solid #dedede;
   border-right: 1px solid #bbb;
@@ -68,6 +74,7 @@
   color: #63A142;
   border-radius: 11px;
   background-color: #FFF;
+  cursor: pointer;
 }
 
 .form-settings-button:hover {
@@ -90,4 +97,32 @@
   background-color: #FFF;
   margin:5px;
   width: 100px;
+}
+
+.privacy-fieldset {
+  background: #D8EFB3;
+  width: 93%;
+  margin: 0px 0 30px 0;
+  padding: 3px 0 10px 0;
+  border: none;
+  color: #333;
+  position: relative;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.privacy-legend {
+  background: #D8EFB3;
+  padding: 4px 7px 4px 10px;
+  font-size: 12px;
+  text-align: left;
+  font-weight: bold;
+  line-height: 150%;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.radio-label {
+  font-size: 12px;
 }

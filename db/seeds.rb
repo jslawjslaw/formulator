@@ -18,3 +18,5 @@ Form.create!([
   { title: "Sample form 2", description: "this is my second sample form", author_id: User.all.last.id, permanent_link: "random_url_here2", private: false },
   { title: "3rd form", description: "this is my third sample form", author_id: User.all.first.id, permanent_link: "random_url_here3", private: false }
 ])
+
+Field.destroy_all

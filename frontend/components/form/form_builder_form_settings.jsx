@@ -4,7 +4,6 @@ import merge from 'lodash/merge';
 class FormSettings extends React.Component {
   constructor(props) {
     super(props);
-    const button = (props.formId) ?  "Update" : "Create";
 
     this.state = {
       title: "",
@@ -12,22 +11,39 @@ class FormSettings extends React.Component {
       private: "",
       choices: "",
       permanent_link: "",
-      author_id: props.userId,
-      button
+      author_id: "",
+      button: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentWillMount() {
+// Called on initial render
+  componentWillReceiveProps(nextProps) {
+    const button = (nextProps.currentForm.id) ?  "Update" : "Create";
+    this.setState({
+      title: nextProps.currentForm.title,
+      description: nextProps.currentForm.description,
+      private: nextProps.currentForm.private,
+      choices: nextProps.currentForm.choices,
+      permanent_link: nextProps.currentForm.permanent_link,
+      author_id: nextProps.currentForm.author_id,
+      button
+    });
+  }
+
+// Called when moving to another tab and back
+  componentDidMount() {
+    const button = (this.props.currentForm.id) ?  "Update" : "Create";
     this.setState({
       title: this.props.currentForm.title,
       description: this.props.currentForm.description,
       private: this.props.currentForm.private,
       choices: this.props.currentForm.choices,
       permanent_link: this.props.currentForm.permanent_link,
-      author_id: this.props.currentForm.author_id
+      author_id: this.props.currentForm.author_id,
+      button
     });
   }
 
@@ -57,14 +73,19 @@ class FormSettings extends React.Component {
       author_id: this.state.author_id,
       permanent_link: this.state.permanent_link,
       private: this.state.private,
-      id: this.props.formId
+      id: this.props.currentForm.id
     };
 
     if (this.state.button === "Create") {
-      if (this.state.private === "") {
+      if (!this.state.private) {
         form.private = false;
       }
-      this.props.createForm(form).then(() => this.props.router.push('/manager'));
+      if (!this.state.author_id) {
+        form.author_id = this.props.userId;
+      }
+      this.props.createForm(form, this.props.router).then((action) => {
+        action.router.push(`/build/${ action.currentForm.id }`)
+      });
     } else {
       this.props.updateForm(form);
     }
@@ -89,21 +110,24 @@ class FormSettings extends React.Component {
             onChange={ this.handleChange }
             value={ this.state.description } />
         </label>
-        <input
-          className="form-settings-radio"
-          type="radio"
-          name="private"
-          value={ false }
-          checked={ !this.state.private }
-          onChange={ this.handleChange }/><span> Public</span>
-          <br />
+        <fieldset className="privacy-fieldset">
+          <legend className="privacy-legend">Privacy Options</legend>
           <input
             className="form-settings-radio"
             type="radio"
             name="private"
-            value={ true }
-            checked={ this.state.private }
-            onChange={ this.handleChange }/><span> Private</span>
+            value={ false }
+            checked={ !this.state.private }
+            onChange={ this.handleChange }/><span className="radio-label"> Public</span>
+            <br />
+            <input
+              className="form-settings-radio"
+              type="radio"
+              name="private"
+              value={ true }
+              checked={ this.state.private }
+              onChange={ this.handleChange }/><span className="radio-label"> Private</span>
+          </fieldset>
           <button
             className="form-settings-button"
             onClick={ this.handleSubmit }>{ this.state.button }</button>

@@ -21,8 +21,12 @@ class Api::FormsController < ApplicationController
   def update
     @form = Form.find(params[:form][:id])
     if @form.update(form_params)
-      @forms = current_user.forms
-      render :index
+      if params[:render] == "index"
+        @forms = current_user.forms
+        render :index
+      else
+        render :show
+      end
     else
       render json: @form.errors.full_messages, status: 422
     end

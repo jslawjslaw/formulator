@@ -2,21 +2,20 @@ import { connect } from 'react-redux';
 import FormBuilder from './form_builder';
 import { logout } from '../../actions/session_actions';
 import { fetchForm, updateForm, createForm } from '../../actions/form_actions';
-import { createField, updateField, deleteField } from '../../actions/field_actions';
+import { createField, updateField, deleteField, changeFieldIndex } from '../../actions/field_actions';
+import { changeTabIndex } from '../../actions/tab_actions';
 
-const mapStateToProps = (state, ownProps) => {
-  let formId;
-  if (ownProps.params.id) {
-    formId = parseInt(ownProps.params.id);
+const mapStateToProps = (state) => {
+  let userId;
+  if (state.session.currentUser) {
+    userId = state.session.currentUser.id;
+  } else {
+    userId = null;
   }
-  const userId = state.session.currentUser.id;
-  const panes = ['formSettings', 'addField' ];
-
   return {
-    formId,
     userId,
-    panes,
-    router: ownProps.router,
+    fieldIndex: state.fieldIndex,
+    tabIndex: state.tabIndex,
     currentForm: state.forms.currentForm,
     errors: state.forms.errors
    };
@@ -26,11 +25,13 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     logout: () => dispatch(logout()),
     fetchForm: (id) => dispatch(fetchForm(id)),
-    createForm: (form) => dispatch(createForm(form)),
+    createForm: (form, router) => dispatch(createForm(form, router)),
     updateForm: (form) => dispatch(updateForm(form)),
-    createField: (field, formId) => dispatch(createField(field, formId)),
-    updateField: (field, formId) => dispatch(updateField(field, formId)),
-    deleteField: (fieldId, formId) => dispatch(deleteField(fieldId, formId))
+    createField: (field) => dispatch(createField(field)),
+    updateField: (field) => dispatch(updateField(field)),
+    deleteField: (field) => dispatch(deleteField(field)),
+    changeFieldIndex: (index) => dispatch(changeFieldIndex(index)),
+    changeTabIndex: (index) => dispatch(changeTabIndex(index))
   };
 };
 

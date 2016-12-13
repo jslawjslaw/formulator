@@ -15,6 +15,15 @@ class Api::FieldsController < ApplicationController
   end
 
   def update
+    @field = Field.find(params[:field][:id])
+    if @field.update(field_params)
+      form_id = @field.form_id
+      form = Form.find(form_id)
+      @fields = form.fields
+      render :index
+    else
+      render json: @field.errors.full_messages, status: 422
+    end
   end
 
   def destroy

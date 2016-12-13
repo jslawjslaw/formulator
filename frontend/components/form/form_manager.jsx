@@ -28,7 +28,7 @@ class FormManager extends React.Component {
           forms={ this.props.forms }
           fetchForms={ this.props.fetchForms }
           deleteForm={ this.props.deleteForm }
-          makePrivate={ this.props.makePrivate }
+          updateForm={ this.props.updateForm }
           fetchForm={ this.props.fetchForm }
           router={ this.props.router }/>
       </div>
