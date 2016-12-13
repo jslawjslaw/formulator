@@ -19,6 +19,51 @@ class fieldSettingsTab extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.updateField = this.updateField.bind(this);
+    this.deleteField = this.deleteField.bind(this);
+    this.updateChoice = this.updateChoice.bind(this);
+    this.addChoice = this.addChoice.bind(this);
+    this.removeChoice = this.removeChoice.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      label: this.props.currentForm.fields[nextProps.fieldIndex].label,
+      userInstruction: this.props.currentForm.fields[nextProps.fieldIndex].user_instruction,
+      ord: this.props.currentForm.fields[nextProps.fieldIndex].ord,
+      choices: this.props.currentForm.fields[nextProps.fieldIndex].choices,
+      fieldType: this.props.currentForm.fields[nextProps.fieldIndex].field_type,
+      formId: this.props.currentForm.fields[nextProps.fieldIndex].form_id,
+      id: this.props.currentForm.fields[nextProps.fieldIndex].id
+    });
+  }
+
+  updateChoice(idx) {
+    return (e) => {
+      if (!e.currentTarget.value.includes("^")) {
+        let choices = this.state.choices.split("^");
+        choices = choices.slice(0, choices.length-1);
+        choices[idx] = e.currentTarget.value;
+        choices = choices.join("^").concat("^");
+        this.setState({ choices });
+      }
+    }
+  }
+
+  addChoice(e) {
+    e.preventDefault();
+    this.setState({
+      choices: this.state.choices.concat(" ^")
+    });
+  }
+
+  removeChoice(idx) {
+    return () => {
+      let choices = this.state.choices.split("^");
+      choices = choices.slice(0, choices.length-1);
+      choices.splice(idx, 1);
+      choices = choices.join("^").concat("^");
+      this.setState({ choices });
+    }
   }
 
   updateField(e) {
@@ -33,7 +78,22 @@ class fieldSettingsTab extends React.Component {
       id: this.state.id
     };
 
-    this.props.updateField(field);
+    this.props.updateField(field).then(() => this.props.changeTabIndex(0));
+  }
+
+  deleteField(e) {
+    e.preventDefault();
+    const field = {
+      label: this.state.label,
+      user_instruction: this.state.userInstruction,
+      ord: this.state.ord,
+      field_type: this.state.fieldType,
+      form_id: this.state.formId,
+      choices: this.state.choices,
+      id: this.state.id
+    };
+
+    this.props.deleteField(field).then(() => this.props.changeTabIndex(0));
   }
 
   handleChange(e) {
@@ -46,39 +106,97 @@ class fieldSettingsTab extends React.Component {
   }
 
   render() {
+    let choices;
     if (!this.props.currentForm.fields.length) {
       return(
         <section className="nothing-to-see">
-          <h1 className="red">Nothing to see here...</h1>
+          <h1 className="red">Aarghh, nothing to see here...</h1>
+          <img className="empty-treasure-image" src={ window.emptyTreasure } />
         </section>
       )
+    } else {
+      let choicesArray = this.state.choices.split("^");
+      choicesArray = choicesArray.slice(0, choicesArray.length - 1);
+      choices = choicesArray.map( (choice, idx) => {
+        if(idx === 0) {
+          return (
+            <li
+              className="choice-li"
+              key={ idx }>
+              <input
+                className="choice-input"
+                value={ choice }
+                type="text"
+                onChange={ this.updateChoice(idx) }/>
+              <button onClick={ this.addChoice }><img className="lonely-green-plus" src={ window.greenPlus } /></button>
+            </li>
+          )
+        }
+        return (
+          <li
+            className="choice-li"
+            key={ idx }>
+            <input
+              className="choice-input"
+              value={ choice }
+              type="text"
+              onChange={ this.updateChoice(idx) }/>
+            <div className="button-block">
+              <button onClick={ this.addChoice }><img className="green-plus" src={ window.greenPlus } /></button>
+              <button onClick={ this.removeChoice(idx) }><img className="red-minus" src={ window.redMinus } /></button>
+            </div>
+          </li>
+        );
+      });
     }
+
+    let fieldset;
+    if (choices.length) {
+      fieldset = (
+        <fieldset className="choices-fieldset">
+          <legend className="choices-legend">Choices</legend>
+          <ul className="choices-ul">
+            { choices }
+          </ul>
+        </fieldset>
+      );
+    } else {
+      fieldset = "";
+    }
+
     return (
       <form>
-        <label>Input Type
+        <label className="field-settings-label">Input Type
           <input
+            className="field-settings-input"
             type="text"
             name="fieldType"
             readOnly
-            defaultValue={ this.state.fieldType }/>
+            value={ this.state.fieldType }/>
         </label>
-        <label>Label
+        <label className="field-settings-label">Label
           <input
+            className="field-settings-input"
             name="label"
             type="text"
             onChange={ this.handleChange }
             value={ this.state.label }/>
         </label>
-        <label>User Instructions
+        <label className="field-settings-label">User Instructions
           <input
+            className="field-settings-textarea"
             name="userInstructions"
             type="textarea"
             onChange={ this.handleChange }
             value={ this.state.userInstruction }/>
         </label>
+        { fieldset }
         <button
-          className="form-settings-button"
+          className="field-settings-button"
           onClick={ this.updateField }>Update Field</button>
+        <button
+          className="field-settings-button red"
+          onClick={ this.deleteField }>Delete Field</button>
       </form>
     );
   }

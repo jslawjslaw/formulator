@@ -1,0 +1,38 @@
+.user-generated-form {
+  padding: 10px 20px;
+  width: 700px;
+  float: left;
+}
+
+.user-generated-form-head {
+  border-bottom: 1px dotted grey;
+  margin-bottom: 30px;
+}
+
+.user-form-title {
+  margin-bottom: 10px;
+}
+
+.user-form-description {
+  margin-bottom: 5px;
+}
+
+.user-fields-ul {
+  list-style: none;
+}
+
+.user-form-field-input {
+  margin-bottom: 10px;
+}
+
+.user-form-field-label {
+  margin-bottom: 5px;
+}
+
+.user-form-field {
+  padding: 5px;
+}
+
+.user-form-field:hover {
+  border: 1px dotted grey;
+}

@@ -6,36 +6,43 @@ class Form extends React.Component {
   constructor(props) {
     super(props);
 
-    this.changeFieldIndex = this.changeFieldIndex.bind(this);
+    this.changeFieldAndTabIndex = this.changeFieldAndTabIndex.bind(this);
   }
 
-  changeFieldIndex(newIndex) {
-    this.props.changeFieldIndex(newIndex);
+  changeFieldAndTabIndex(idx) {
+    return () => {
+      this.props.changeFieldIndex(idx);
+      this.props.changeTabIndex(2);
+    }
   }
 
   render() {
     let fields;
     if (this.props.currentForm.fields) {
-      fields = this.props.currentForm.fields.map( (field) => {
+      fields = this.props.currentForm.fields.map( (field, idx) => {
         return (
           <li
-            onClick={ () => this.changeFieldIndex(field.ord) }
-            key={ field.ord }><FieldLi field={ field } /></li>
+            className="user-form-field"
+            onClick={ this.changeFieldAndTabIndex(idx) }
+            key={ field.ord }>
+            <FieldLi field={ field } />
+          </li>
         );
       });
     } else {
       fields = [];
     }
 
-
     return(
-      <section>
-        <h1>{ this.props.currentForm.title }</h1>
-        <h2>{ this.props.currentForm.description }</h2>
-        <ul>
+      <div className="user-generated-form">
+        <section className="user-generated-form-head">
+          <h1 className="user-form-title">{ this.props.currentForm.title }</h1>
+          <p className="user-form-description">{ this.props.currentForm.description }</p>
+        </section>
+        <ul className="user-fields-ul">
           { fields }
         </ul>
-      </section>
+      </div>
     );
   }
 }

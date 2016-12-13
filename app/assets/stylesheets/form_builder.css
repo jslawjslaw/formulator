@@ -7,15 +7,17 @@
 }
 
 .settings-pane {
-  height: auto;
+  height: 800px;
   min-height: 500px;
-  width: 370px;
   float: left;
+  width: 370px;
   margin: 0;
   background-color: #E7FFCF;
   border-right: 1px solid #C2EF95;
   border-top: 1px solid #C2EF95;
+  border-bottom: 1px solid #C2EF95;
   padding-left: 5px;
+  border-bottom-left-radius: 5px;
 }
 
 .form-builder-heading {
@@ -31,6 +33,7 @@
   font-weight: bold;
   line-height: 150%;
   margin-bottom: 20px;
+  margin-left: 10px;
   padding: 0 0 3px 0;
   border: none;
   display: block;
@@ -56,6 +59,7 @@
   margin: 0;
   border-radius: 7px;
   height: 5em;
+  text-align: justify;
 }
 
 .form-settings-radio span {
@@ -117,7 +121,8 @@
 .privacy-fieldset {
   background: #D8EFB3;
   width: 93%;
-  margin: 0px 0 30px 0;
+  margin-bottom: 30px;
+  margin-left: 10px;
   padding: 3px 0 10px 0;
   border: none;
   color: #333;
@@ -156,4 +161,132 @@
 
 .nothing-to-see > h1 {
   font-size: 12px;
+}
+
+.field-settings-label {
+  color: #333;
+  font-size: 12px;
+  text-align: left;
+  font-weight: bold;
+  line-height: 150%;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  padding: 0 0 3px 0;
+  border: none;
+  display: block;
+  white-space: normal;
+  width: 100%;
+}
+
+.field-settings-input {
+  width: 70%;
+  min-width: 90%;
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 3px;
+  margin: 0;
+  border-radius: 7px;
+}
+
+.field-settings-textarea {
+  width: 90%;
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 3px;
+  margin: 0;
+  border-radius: 7px;
+  height: 5em;
+}
+
+.field-settings-button {
+  font-weight: bold;
+  display: inline-block;
+  margin-left: 50px;
+  padding: 5px 10px 6px 10px;
+  border: 1px solid #dedede;
+  border-right: 1px solid #bbb;
+  border-bottom: 1px solid #bfbfbf;
+  color: #63A142;
+  border-radius: 11px;
+  background-color: #FFF;
+  cursor: pointer;
+}
+
+.empty-treasure-image {
+  margin-left: 30%;
+  margin-top: 20px;
+  width: 100px;
+  height: 100px;
+}
+
+.choices-fieldset {
+  background: #D8EFB3;
+  width: 93%;
+  margin-bottom: 30px;
+  margin-left: 10px;
+  padding: 3px 0 10px 0;
+  border: none;
+  color: #333;
+  position: relative;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.choices-legend {
+  background: #D8EFB3;
+  padding: 4px 7px 4px 10px;
+  font-size: 12px;
+  text-align: left;
+  font-weight: bold;
+  line-height: 150%;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.choices-ul {
+  list-style: none;
+}
+
+.choice-li {
+  padding-left: 10px;
+  margin-bottom: 7px;
+}
+
+.choice-input {
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 3px;
+  margin: 0;
+  border-radius: 7px;
+  width: 80%;
+}
+
+.green-plus {
+  vertical-align: bottom;
+  margin-left: 5px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.lonely-green-plus {
+  vertical-align: middle;
+  margin-left: 5px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.red-minus {
+  vertical-align: middle;
+  margin-left: 5px;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.button-block {
+  display: inline-block;
+  vertical-align: middle;
 }

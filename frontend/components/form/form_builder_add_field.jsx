@@ -24,7 +24,7 @@ class AddField extends React.Component {
         this.props.createField(this.state).then(() => this.props.changeTabIndex(2));
       });
     } else if(e.currentTarget.name === "checkboxes") {
-      this.setState({ field_type: "checkbox" }, () => {
+      this.setState({ field_type: "checkbox", choices: "Choice 1^Choice 2^Choice 3^" }, () => {
         this.props.createField(this.state).then(() => this.props.changeTabIndex(2));
       });
     } else if(e.currentTarget.name === "multiple-choice") {

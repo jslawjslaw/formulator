@@ -5,6 +5,8 @@
   border: 1px solid #D5DFED;
   margin: 0 auto;
   width: 900px;
+  height: 400px;
+  overflow: auto;
 }
 
 .search-section {

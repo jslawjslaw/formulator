@@ -23,7 +23,7 @@ const Root = ({ store }) => {
     }
   }
 
-  function ensureLoggedInAndUserOwnsForm(location, replace) {
+  function ensureLoggedInAndUserOwnsForm(location, replace, asyncDone) {
     const loggedIn = store.getState().session.currentUser;
     if (!loggedIn) {
       replace('/');
@@ -33,6 +33,7 @@ const Root = ({ store }) => {
       if(store.getState().session.currentUser.id !== form.author_id) {
         replace('/manager');
       }
+      asyncDone();
     });
   }
 
@@ -45,7 +46,7 @@ const Root = ({ store }) => {
           <Route path="/signup" component={ SessionContainer } />
         </Route>
         <Route path="/manager" onEnter={ ensureLoggedIn } component={ FormManagerContainer } />
-        <Route path="/build/:formId" onEnter={ (loc, rep) => ensureLoggedInAndUserOwnsForm(loc, rep) } component={ FormBuildContainer } />
+        <Route path="/build/:formId" onEnter={ (loc, rep, async) => ensureLoggedInAndUserOwnsForm(loc, rep, async) } component={ FormBuildContainer } />
         <Route path="/build" onEnter={ ensureLoggedIn } component={ FormBuildContainer } />
       </Router>
     </Provider>

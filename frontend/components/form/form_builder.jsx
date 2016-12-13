@@ -8,6 +8,11 @@ import merge from 'lodash/merge';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 class FormBuilder extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.handleSelect = this.handleSelect.bind(this);
+  }
 
   componentDidMount() {
     if (this.props.params.formId) {
@@ -15,14 +20,23 @@ class FormBuilder extends React.Component {
     }
   }
 
+  handleSelect(index, last) {
+    this.props.changeTabIndex(index);
+  }
+
   render() {
     return(
       <div className="stage group">
-        <FormHeader logout={ this.props.logout } router={ this.props.router } />
+        <FormHeader
+          logout={ this.props.logout }
+          router={ this.props.router }
+          changeTabIndex={ this.props.changeTabIndex }/>
         <h1 className="form-builder-heading">Form Builder</h1>
 
         <section className="settings-pane">
-          <Tabs selectedIndex={ this.props.tabIndex }>
+          <Tabs
+            selectedIndex={ this.props.tabIndex }
+            onSelect={ this.handleSelect }>
             <TabList>
               <Tab>Form Settings</Tab>
               <Tab>Add Field</Tab>
@@ -50,12 +64,14 @@ class FormBuilder extends React.Component {
                 updateField={ this.props.updateField }
                 currentForm={ this.props.currentForm }
                 deleteField={ this.props.deleteField }
-                fieldIndex={ this.props.fieldIndex }/>
+                fieldIndex={ this.props.fieldIndex }
+                changeTabIndex={ this.props.changeTabIndex }/>
             </TabPanel>
           </Tabs>
         </section>
 
         <Form
+          changeTabIndex={ this.props.changeTabIndex }
           changeFieldIndex={ this.props.changeFieldIndex }
           currentForm={ this.props.currentForm }/>
       </div>
