@@ -81,22 +81,37 @@
   box-shadow: rgba(0,0,0,0.25) 1px 1px 3px;
 }
 
+.add-field-button-section {
+  padding: 10px;
+}
+
 .add-field-button:hover {
   background: #DFEEA3;
   border: 1px solid #C6D880;
 }
 
+.add-field-blue-header {
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 150%;
+  margin-bottom: 15px;
+  color: #236ABF;
+}
+
 .add-field-button {
-  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1);
-  border-radius: 9px;
-  font-size: 95%;
+  font-size: 90%;
   text-align: center;
-  padding: 4px 0 4px 34px;
+  padding: 5px;
   display: inline-block;
   position: relative;
   background-color: #FFF;
   margin:5px;
-  width: 100px;
+  width: 150px;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1);
+  border-radius: 9px;
+  background-clip: padding-box;
 }
 
 .privacy-fieldset {
@@ -124,5 +139,21 @@
 }
 
 .radio-label {
+  font-size: 12px;
+}
+
+.nothing-to-see {
+  background-color: #FBFFCF;
+  border-top: 1px solid #EBEFC2;
+  border-left: 1px solid #EBEFC2;
+  border-bottom: 1px solid #D9DF99;
+  border-right: 1px solid #D9DF99;
+  border-radius: 15px;
+  width: 80%;
+  padding: 10px;
+  margin: 10px auto;
+}
+
+.nothing-to-see > h1 {
   font-size: 12px;
 }

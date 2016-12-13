@@ -44,8 +44,8 @@ class AddField extends React.Component {
 
   render() {
     return(
-      <section>
-        <h2>Standard</h2>
+      <section className="add-field-button-section">
+        <h2 className="add-field-blue-header">Standard</h2>
         <button
           onClick={ this.handleClick }
           name="single-line-text"

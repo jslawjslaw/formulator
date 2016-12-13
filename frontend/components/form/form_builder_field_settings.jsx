@@ -48,7 +48,9 @@ class fieldSettingsTab extends React.Component {
   render() {
     if (!this.props.currentForm.fields.length) {
       return(
-        <div>Nothing to see here...</div>
+        <section className="nothing-to-see">
+          <h1 className="red">Nothing to see here...</h1>
+        </section>
       )
     }
     return (
