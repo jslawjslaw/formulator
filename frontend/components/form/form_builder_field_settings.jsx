@@ -8,11 +8,11 @@ class fieldSettingsTab extends React.Component {
     if (this.props.currentForm.fields.length) {
       this.state = {
         label: this.props.currentForm.fields[this.props.fieldIndex].label,
-        userInstruction: this.props.currentForm.fields[this.props.fieldIndex].user_instruction,
+        user_instruction: this.props.currentForm.fields[this.props.fieldIndex].user_instruction,
         ord: this.props.currentForm.fields[this.props.fieldIndex].ord,
         choices: this.props.currentForm.fields[this.props.fieldIndex].choices,
-        fieldType: this.props.currentForm.fields[this.props.fieldIndex].field_type,
-        formId: this.props.currentForm.fields[this.props.fieldIndex].form_id,
+        field_type: this.props.currentForm.fields[this.props.fieldIndex].field_type,
+        form_id: this.props.currentForm.fields[this.props.fieldIndex].form_id,
         id: this.props.currentForm.fields[this.props.fieldIndex].id
       };
     }
@@ -28,11 +28,11 @@ class fieldSettingsTab extends React.Component {
   componentWillReceiveProps(nextProps) {
     this.setState({
       label: this.props.currentForm.fields[nextProps.fieldIndex].label,
-      userInstruction: this.props.currentForm.fields[nextProps.fieldIndex].user_instruction,
+      user_instruction: this.props.currentForm.fields[nextProps.fieldIndex].user_instruction,
       ord: this.props.currentForm.fields[nextProps.fieldIndex].ord,
       choices: this.props.currentForm.fields[nextProps.fieldIndex].choices,
-      fieldType: this.props.currentForm.fields[nextProps.fieldIndex].field_type,
-      formId: this.props.currentForm.fields[nextProps.fieldIndex].form_id,
+      field_type: this.props.currentForm.fields[nextProps.fieldIndex].field_type,
+      form_id: this.props.currentForm.fields[nextProps.fieldIndex].form_id,
       id: this.props.currentForm.fields[nextProps.fieldIndex].id
     });
   }
@@ -44,15 +44,17 @@ class fieldSettingsTab extends React.Component {
         choices = choices.slice(0, choices.length-1);
         choices[idx] = e.currentTarget.value;
         choices = choices.join("^").concat("^");
-        this.setState({ choices });
+        this.setState({ choices }, () => {
+          this.props.updateStateField(this.state);
+        });
       }
     }
   }
 
   addChoice(e) {
     e.preventDefault();
-    this.setState({
-      choices: this.state.choices.concat(" ^")
+    this.setState({ choices: this.state.choices.concat(" ^") }, () => {
+      this.props.updateStateField(this.state);
     });
   }
 
@@ -62,18 +64,20 @@ class fieldSettingsTab extends React.Component {
       choices = choices.slice(0, choices.length-1);
       choices.splice(idx, 1);
       choices = choices.join("^").concat("^");
-      this.setState({ choices });
+      this.setState({ choices }, () => {
+        this.props.updateStateField(this.state);
+      });
     }
   }
 
   updateField(e) {
     e.preventDefault();
-    const field = {
+      const field = {
       label: this.state.label,
-      user_instruction: this.state.userInstruction,
+      user_instruction: this.state.user_instruction,
       ord: this.state.ord,
-      field_type: this.state.fieldType,
-      form_id: this.state.formId,
+      field_type: this.state.field_type,
+      form_id: this.state.form_id,
       choices: this.state.choices,
       id: this.state.id
     };
@@ -85,10 +89,10 @@ class fieldSettingsTab extends React.Component {
     e.preventDefault();
     const field = {
       label: this.state.label,
-      user_instruction: this.state.userInstruction,
+      user_instruction: this.state.user_instruction,
       ord: this.state.ord,
-      field_type: this.state.fieldType,
-      form_id: this.state.formId,
+      field_type: this.state.field_type,
+      form_id: this.state.form_id,
       choices: this.state.choices,
       id: this.state.id
     };
@@ -99,9 +103,13 @@ class fieldSettingsTab extends React.Component {
   handleChange(e) {
     e.preventDefault();
     if (e.currentTarget.name === "label") {
-      this.setState({ label: e.currentTarget.value });
+      this.setState({ label: e.currentTarget.value }, () => {
+        this.props.updateStateField(this.state);
+      });
     } else if (e.currentTarget.name === "userInstructions") {
-      this.setState({ userInstruction: e.currentTarget.value });
+      this.setState({ user_instruction: e.currentTarget.value }, () => {
+        this.props.updateStateField(this.state);
+      });
     }
   }
 
@@ -131,22 +139,23 @@ class fieldSettingsTab extends React.Component {
               <button onClick={ this.addChoice }><img className="lonely-green-plus" src={ window.greenPlus } /></button>
             </li>
           )
+        } else {
+          return (
+            <li
+              className="choice-li"
+              key={ idx }>
+              <input
+                className="choice-input"
+                value={ choice }
+                type="text"
+                onChange={ this.updateChoice(idx) }/>
+              <div className="button-block">
+                <button onClick={ this.addChoice }><img className="green-plus" src={ window.greenPlus } /></button>
+                <button onClick={ this.removeChoice(idx) }><img className="red-minus" src={ window.redMinus } /></button>
+              </div>
+            </li>
+          );
         }
-        return (
-          <li
-            className="choice-li"
-            key={ idx }>
-            <input
-              className="choice-input"
-              value={ choice }
-              type="text"
-              onChange={ this.updateChoice(idx) }/>
-            <div className="button-block">
-              <button onClick={ this.addChoice }><img className="green-plus" src={ window.greenPlus } /></button>
-              <button onClick={ this.removeChoice(idx) }><img className="red-minus" src={ window.redMinus } /></button>
-            </div>
-          </li>
-        );
       });
     }
 
@@ -172,7 +181,7 @@ class fieldSettingsTab extends React.Component {
             type="text"
             name="fieldType"
             readOnly
-            value={ this.state.fieldType }/>
+            value={ this.state.field_type }/>
         </label>
         <label className="field-settings-label">Label
           <input
@@ -188,7 +197,7 @@ class fieldSettingsTab extends React.Component {
             name="userInstructions"
             type="textarea"
             onChange={ this.handleChange }
-            value={ this.state.userInstruction }/>
+            value={ this.state.user_instruction }/>
         </label>
         { fieldset }
         <button

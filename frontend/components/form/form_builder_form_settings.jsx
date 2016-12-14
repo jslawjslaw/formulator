@@ -9,10 +9,11 @@ class FormSettings extends React.Component {
       title: "",
       description: "",
       private: "",
-      choices: "",
+      fields: "",
       permanent_link: "",
       author_id: "",
-      button: ""
+      button: "",
+      id: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -26,10 +27,11 @@ class FormSettings extends React.Component {
       title: nextProps.currentForm.title,
       description: nextProps.currentForm.description,
       private: nextProps.currentForm.private,
-      choices: nextProps.currentForm.choices,
+      fields: nextProps.currentForm.fields,
       permanent_link: nextProps.currentForm.permanent_link,
       author_id: nextProps.currentForm.author_id,
-      button
+      button,
+      id: nextProps.currentForm.id
     });
   }
 
@@ -40,10 +42,11 @@ class FormSettings extends React.Component {
       title: this.props.currentForm.title,
       description: this.props.currentForm.description,
       private: this.props.currentForm.private,
-      choices: this.props.currentForm.choices,
+      fields: this.props.currentForm.fields,
       permanent_link: this.props.currentForm.permanent_link,
       author_id: this.props.currentForm.author_id,
-      button
+      button,
+      id: this.props.currentForm.id
     });
   }
 
@@ -51,9 +54,13 @@ class FormSettings extends React.Component {
     let newState = Object.assign({}, this.state);
 
     if (e.currentTarget.name === "title") {
-      this.setState({ title: e.currentTarget.value });
+      this.setState({ title: e.currentTarget.value }, () => {
+        this.props.updateStateForm(this.state);
+      });
     } else if (e.currentTarget.name === "description") {
-      this.setState({ description: e.currentTarget.value });
+      this.setState({ description: e.currentTarget.value }, () => {
+        this.props.updateStateForm(this.state);
+      });
     } else if (e.currentTarget.name === "private") {
       let value;
       if (e.currentTarget.value === "false") {
@@ -61,7 +68,9 @@ class FormSettings extends React.Component {
       } else {
         value = true;
       }
-      this.setState({ private: value });
+      this.setState({ private: value }, () => {
+        this.props.updateStateForm(this.state);
+      });
     }
   }
 

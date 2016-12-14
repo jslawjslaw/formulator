@@ -42,7 +42,6 @@ class FieldLi extends React.Component {
     } else {
       input = <input className="user-form-field-input" type={ this.props.field.field_type } />
     }
-
     return (
       <section>
         <p className="user-form-field-label">{ this.props.field.label }</p>

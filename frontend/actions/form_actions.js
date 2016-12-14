@@ -40,6 +40,12 @@ export function updateForm(form) {
   };
 }
 
+export function updateStateForm(form) {
+  return (dispatch) => {
+    dispatch(receiveForm(form));
+  };
+}
+
 export function deleteForm(form) {
   return (dispatch) => {
     return APIUtil.deleteForm(form).then(

@@ -19,11 +19,11 @@ class Form extends React.Component {
   render() {
     let fields;
     if (this.props.currentForm.fields) {
-      fields = this.props.currentForm.fields.map( (field, idx) => {
+      fields = this.props.currentForm.fields.map( (field) => {
         return (
           <li
             className="user-form-field"
-            onClick={ this.changeFieldAndTabIndex(idx) }
+            onClick={ this.changeFieldAndTabIndex(field.ord) }
             key={ field.ord }>
             <FieldLi field={ field } />
           </li>
