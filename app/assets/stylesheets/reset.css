@@ -15,7 +15,7 @@ html {
   background: #eee;
 }
 
-.group {
+.group:after {
   display: block;
   clear: both;
   content: "";

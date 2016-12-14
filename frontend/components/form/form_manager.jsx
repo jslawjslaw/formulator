@@ -16,21 +16,29 @@ class FormManager extends React.Component {
 
   render() {
     return (
-      <div>
-        <FormHeader logout={ this.props.logout } router={ this.props.router } />
-        <section className="form-manager-section">
-          <h1 className="form-name">Form Manager</h1>
-          <button className="new-form-button" onClick={ this.handleClick }>+ New Form</button>
-        </section>
+      <div className="body">
+        <div className="forms-container">
+          <div className="head-nav">
+            <FormHeader logout={ this.props.logout } router={ this.props.router } />
+          </div>
 
+          <div className="stage">
+            <section className="stage-info">
+              <h1 className="form-name">Form Manager</h1>
+              <button className="new-form-button" onClick={ this.handleClick }>+ New Form</button>
+            </section>
 
-        <Searchbar
-          forms={ this.props.forms }
-          fetchForms={ this.props.fetchForms }
-          deleteForm={ this.props.deleteForm }
-          updateForm={ this.props.updateForm }
-          fetchForm={ this.props.fetchForm }
-          router={ this.props.router }/>
+            <div className="main-forms">
+              <Searchbar
+                forms={ this.props.forms }
+                fetchForms={ this.props.fetchForms }
+                deleteForm={ this.props.deleteForm }
+                updateForm={ this.props.updateForm }
+                fetchForm={ this.props.fetchForm }
+                router={ this.props.router }/>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

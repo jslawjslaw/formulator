@@ -34,14 +34,16 @@ class Form extends React.Component {
     }
 
     return(
-      <div className="user-generated-form">
-        <section className="user-generated-form-head">
-          <h1 className="user-form-title">{ this.props.currentForm.title }</h1>
-          <p className="user-form-description">{ this.props.currentForm.description }</p>
-        </section>
-        <ul className="user-fields-ul">
-          { fields }
-        </ul>
+      <div className="main">
+        <div className="user-generated-form">
+          <section className="user-generated-form-head">
+            <h1 className="user-form-title">{ this.props.currentForm.title }</h1>
+            <p className="user-form-description">{ this.props.currentForm.description }</p>
+          </section>
+          <ul className="user-fields-ul">
+            { fields }
+          </ul>
+        </div>
       </div>
     );
   }

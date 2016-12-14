@@ -35,8 +35,8 @@ class FormLi extends React.Component {
     let imageSrc = this.props.form.private ? window.lock : window.earth;
     let button = this.props.form.private ? "Make Public" : "Make Private";
     return (
-      <div className="li-holder group">
-        <Link to={`/build/${ this.props.form.id }`}>
+      <div className="li-holder a-group">
+        <Link className="form-title-link" to={`/build/${ this.props.form.id }`}>
           <img className="privacy-image" src={ imageSrc } />
           <h2 className="li-form-title">{ this.props.form.title }</h2>
         </Link>

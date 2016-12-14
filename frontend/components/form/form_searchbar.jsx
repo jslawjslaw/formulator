@@ -50,14 +50,14 @@ class Searchbar extends React.Component {
 
     return (
       <div className="search-content">
-        <section className="search-section group">
+        <div className="sort">
           <label className="search-label group">Search
             <input
               className="search-input"
               onChange={ this.handleChange }
               value={ this.state.input } />
           </label>
-        </section>
+        </div>
         <section>
           <ul className="forms-list">
             <ReactCSSTransitionGroup

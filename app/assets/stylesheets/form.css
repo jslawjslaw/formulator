@@ -1,11 +1,15 @@
+.main {
+  float: left;
+  display: block;
+  width: 620px;
+}
+
 .user-generated-form {
   padding: 10px 20px;
-  width: 700px;
   float: left;
 }
 
 .user-generated-form-head {
-  border-bottom: 1px dotted grey;
   margin-bottom: 30px;
 }
 
@@ -14,7 +18,8 @@
 }
 
 .user-form-description {
-  margin-bottom: 5px;
+  padding-bottom: 10px;
+  border-bottom: 1px dotted grey;
 }
 
 .user-fields-ul {

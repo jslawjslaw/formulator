@@ -14,9 +14,25 @@ User.create!([
 
 Form.destroy_all
 Form.create!([
-  { title: "Sample form 1", description: "this is my first sample form", author_id: User.all.first.id, permanent_link: "random_url_here", private: false },
-  { title: "Sample form 2", description: "this is my second sample form", author_id: User.all.last.id, permanent_link: "random_url_here2", private: false },
-  { title: "3rd form", description: "this is my third sample form", author_id: User.all.first.id, permanent_link: "random_url_here3", private: false }
+  { title: "2016 Election Poll", description: "Please answer every question to the best of your ability", author_id: User.find_by(email: "jon@email.com").id, permanent_link: Form.generate_permanent_link, private: false },
+  { title: "Demographics", description: "Please fill out your demographic information", author_id: User.find_by(email: "jon@email.com").id, permanent_link: Form.generate_permanent_link, private: false },
+  { title: "Favorites", description: "What are your favorite things?", author_id: User.find_by(email: "jon@email.com").id, permanent_link: Form.generate_permanent_link, private: false },
+  { title: "Survey 1", description: "This is the 1st sample survey", author_id: User.find_by(email: "jon@email.com").id, permanent_link: Form.generate_permanent_link, private: false },
+  { title: "Survey 2", description: "This is the 2st sample survey", author_id: User.find_by(email: "jon@email.com").id, permanent_link: Form.generate_permanent_link, private: false },
+  { title: "Survey 3", description: "This is the 3st sample survey", author_id: User.find_by(email: "jon@email.com").id, permanent_link: Form.generate_permanent_link, private: false },
+  { title: "Sample form 1", description: "This is the 1st sample form", author_id: User.find_by(email: "jon@email.com").id, permanent_link: Form.generate_permanent_link, private: false },
+  { title: "Sample form 2", description: "This is the 2nd sample form", author_id: User.find_by(email: "jon@email.com").id, permanent_link: Form.generate_permanent_link, private: false },
+  { title: "Sample form 3", description: "This is the 3rd sample form", author_id: User.find_by(email: "jon@email.com").id, permanent_link: Form.generate_permanent_link, private: false },
+  { title: "Sample form 5", description: "This is the 5th sample form", author_id: User.find_by(email: "jon2@email.com").id, permanent_link: Form.generate_permanent_link, private: false },
+  { title: "Sample form 6", description: "This is the 6th sample form", author_id: User.find_by(email: "jon2@email.com").id, permanent_link: Form.generate_permanent_link, private: false },
+  { title: "Sample form 7", description: "This is the 7th sample form", author_id: User.find_by(email: "jon2@email.com").id, permanent_link: Form.generate_permanent_link, private: false },
+  { title: "Sample form 8", description: "This is the 8th sample form", author_id: User.find_by(email: "jon2@email.com").id, permanent_link: Form.generate_permanent_link, private: false }
 ])
 
 Field.destroy_all
+Field.create!([
+  { field_type: "text", label: "What is your age?", form_id: Form.find_by(title: "2016 Election Poll").id, ord: 0, choices: "" },
+  { field_type: "radio", label: "What party are you affiliated with?", form_id: Form.find_by(title: "2016 Election Poll").id, ord: 1, choices: "Democratic^Republic^Independent^Other^" },
+  { field_type: "checkbox", label: "Do you follow politics?", form_id: Form.find_by(title: "2016 Election Poll").id, ord: 2, choices: "Yes^No^Sometimes^" },
+  { field_type: "checkbox", label: "Did you vote?", form_id: Form.find_by(title: "2016 Election Poll").id, ord: 3, choices: "Yes^No^Maybe^" }
+])

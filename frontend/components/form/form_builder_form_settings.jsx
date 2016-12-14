@@ -113,7 +113,7 @@ class FormSettings extends React.Component {
     }
 
     return (
-      <form className="form-settings-pane">
+      <form className="form-settings-pane group">
         <label className="form-settings-label">Form Name
           <input
             className="form-settings-input-text"

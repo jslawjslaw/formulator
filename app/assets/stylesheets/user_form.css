@@ -31,7 +31,7 @@
 }
 
 .user-generated-form-head {
-  padding: 10px 20px;
+  padding: 10px 20px 0 20px;
 }
 
 .the-form {
@@ -42,19 +42,21 @@
 
 .the-fields {
   list-style: none;
+  margin-left: 20px;
 }
 
 .submit-button {
   font-size: 100%;
-  margin-right: 5px;
   padding: 3px 3px;
   width: auto;
   overflow: visible;
   border: 1px solid black;
   background-color: #c0c0c0;
   cursor: pointer;
-  margin-top: 10px;
+  text-align: center;
+  margin: 20px auto;
   border-radius: 3px;
+  display: block;
 }
 
 .submit-button:hover {

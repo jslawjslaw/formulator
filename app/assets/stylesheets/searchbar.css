@@ -1,12 +1,15 @@
-.search-content {
-  padding: 0 0 10px 0;
-  border-radius: 5px;
-  background: #E5F0FF;
-  border: 1px solid #D5DFED;
-  margin: 0 auto;
-  width: 900px;
-  height: 400px;
-  overflow: auto;
+
+.sort {
+  background: #B3D7FF;
+  color: #152531;
+  padding: 12px;
+  font-size: 100%;
+  font-weight: bold;
+  text-align: right;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  display: block;
+  width: auto;
 }
 
 .search-section {
@@ -22,6 +25,23 @@
   box-sizing: content-box;
 }
 
+.a-group {
+  clear: both;
+  content: "";
+}
+
+.form-title-link {
+  display: inline-block;
+}
+
+.main-forms {
+  margin: 10px 0 12px 0;
+  padding: 0 0 10px 0;
+  border-radius: 5px;
+  background: #E5F0FF;
+  border: 1px solid #D5DFED;
+}
+
 .search-label {
   display: inline-block;
   width: 300px;
@@ -35,11 +55,14 @@
 
 .forms-list {
   list-style: none;
+  height: 500px;
+  overflow: auto;
 }
 
 .form-lis {
   position: relative;
   padding: 4px 0 4px 0;
+  margin: 0 20px;
 }
 
 .li-holder {
@@ -48,7 +71,6 @@
   padding: 0 20px 10px 20px;
   background-color: white;
   border-radius: 5px;
-  width: 800px;
   margin: 20px auto 0 auto;
   display: flex;
   justify-content: space-between;
