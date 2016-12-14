@@ -18,6 +18,11 @@ class Api::FormsController < ApplicationController
     render :show
   end
 
+  def fetch_form
+    @form = Form.find_by(permanent_link: params[:permanent_link])
+    render :show
+  end
+
   def update
     @form = Form.find(params[:form][:id])
     if @form.update(form_params)

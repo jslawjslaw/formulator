@@ -76,8 +76,17 @@ export function fetchForms() {
 }
 
 export function fetchForm(id) {
-  return(dispatch) => {
+  return (dispatch) => {
     return APIUtil.fetchForm(id).then(
+      (form) => dispatch(receiveForm(form)),
+      (err) => dispatch(receiveErrors(err))
+    );
+  };
+}
+
+export function fetchUserForm(permanent_link) {
+  return (dispatch) => {
+    return APIUtil.fetchFormByPL(permanent_link).then(
       (form) => dispatch(receiveForm(form)),
       (err) => dispatch(receiveErrors(err))
     );

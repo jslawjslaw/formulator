@@ -101,6 +101,17 @@ class FormSettings extends React.Component {
   }
 
   render() {
+    let linkInput;
+    if (this.state.permanent_link) {
+      linkInput = (
+        <label className="form-settings-label">Share Link
+          <input type="text" className="form-settings-input-text" readOnly value={ '/form/'.concat(this.state.permanent_link) }/>
+        </label>
+      );
+    } else {
+      linkInput = "";
+    }
+
     return (
       <form className="form-settings-pane">
         <label className="form-settings-label">Form Name
@@ -137,6 +148,7 @@ class FormSettings extends React.Component {
               checked={ this.state.private }
               onChange={ this.handleChange }/><span className="radio-label"> Private</span>
           </fieldset>
+          { linkInput }
           <button
             className="form-settings-button"
             onClick={ this.handleSubmit }>{ this.state.button }</button>

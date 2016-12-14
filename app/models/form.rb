@@ -38,7 +38,7 @@ class Form < ActiveRecord::Base
 
   def ensure_permanent_link!
     unless self.permanent_link
-      self.permanent_link = "/form/" + Form.generate_permanent_link
+      self.permanent_link = Form.generate_permanent_link
     end
     self.permanent_link
   end

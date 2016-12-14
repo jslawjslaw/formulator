@@ -1,0 +1,62 @@
+.user-generated-form-show {
+  margin: 17px 0 15px 0;
+  padding: 0;
+  text-align: center;
+  font-size: small;
+  font-family: "Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
+  display: block;
+}
+
+.container {
+  margin: 0 auto 10px auto;
+  width: 640px;
+  text-align: left;
+  background: #fff;
+  border: 1px solid #ccc;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 5px;
+  display: block;
+}
+
+.user-generated-form-show-logo {
+  min-height: 40px;
+  height: 40px;
+  display: block;
+  background: url(/images/wflogo.png) no-repeat left top;
+  overflow: hidden;
+  background: #c0c0c0;
+  opacity: 0.6;
+  color: white;
+  padding-left: 20px;
+  padding-top: 5px;
+}
+
+.user-generated-form-head {
+  padding: 10px 20px;
+}
+
+.the-form {
+  margin: 0 14px 0 14px;
+  padding: 0 0 20px 0;
+  position: relative;
+}
+
+.the-fields {
+  list-style: none;
+}
+
+.submit-button {
+  font-size: 100%;
+  margin-right: 5px;
+  padding: 3px 3px;
+  width: auto;
+  overflow: visible;
+  border: 1px solid black;
+  background-color: #c0c0c0;
+  cursor: pointer;
+  margin-top: 10px;
+  border-radius: 3px;
+}
+
+.submit-button:hover {
+  opacity: 0.5;
+}

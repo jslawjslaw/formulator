@@ -11,6 +11,10 @@ body, div, h1, p, a, ul, li, form, label, br, button {
   background: transparent;
 }
 
+html {
+  background: #eee;
+}
+
 .group {
   display: block;
   clear: both;

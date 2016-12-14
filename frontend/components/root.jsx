@@ -7,6 +7,7 @@ import SessionContainer from './session/session_container';
 import FormManagerContainer from './form/form_manager_container';
 import FormBuildContainer from './form/form_build_container';
 import { fetchForm } from '../util/form_api_util';
+import FormContainer from './form/form_container';
 
 const Root = ({ store }) => {
   function ensureLoggedIn(_, replace) {
@@ -48,6 +49,7 @@ const Root = ({ store }) => {
         <Route path="/manager" onEnter={ ensureLoggedIn } component={ FormManagerContainer } />
         <Route path="/build/:formId" onEnter={ (loc, rep, async) => ensureLoggedInAndUserOwnsForm(loc, rep, async) } component={ FormBuildContainer } />
         <Route path="/build" onEnter={ ensureLoggedIn } component={ FormBuildContainer } />
+        <Route path="/form/:token" component={ FormContainer }/>
       </Router>
     </Provider>
   )

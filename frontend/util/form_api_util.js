@@ -34,3 +34,10 @@ export const deleteForm = (formId) => {
     url: `/api/forms/${formId}`
   });
 };
+
+export const fetchFormByPL = (permanent_link) => {
+  return $.ajax({
+    method: "GET",
+    url: `/api/forms/fetch_form/${ permanent_link }`
+  });
+}
