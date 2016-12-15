@@ -56,7 +56,8 @@ class FormBuilder extends React.Component {
                       createForm={ this.props.createForm }
                       updateForm={ this.props.updateForm }
                       router={ this.props.router }
-                      updateStateForm={ this.props.updateStateForm }/>
+                      updateStateForm={ this.props.updateStateForm }
+                      errors={ this.props.errors }/>
                   </TabPanel>
 
                   <TabPanel>
@@ -73,7 +74,8 @@ class FormBuilder extends React.Component {
                       deleteField={ this.props.deleteField }
                       fieldIndex={ this.props.fieldIndex }
                       changeTabIndex={ this.props.changeTabIndex }
-                      updateStateField={ this.props.updateStateField }/>
+                      updateStateField={ this.props.updateStateField }
+                      errors={ this.props.errors }/>
                   </TabPanel>
                 </Tabs>
               </div>

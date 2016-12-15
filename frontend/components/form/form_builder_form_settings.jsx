@@ -13,7 +13,8 @@ class FormSettings extends React.Component {
       permanent_link: "",
       author_id: "",
       button: "",
-      id: ""
+      id: "",
+      error: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -92,11 +93,15 @@ class FormSettings extends React.Component {
       if (!this.state.author_id) {
         form.author_id = this.props.userId;
       }
-      this.props.createForm(form, this.props.router).then((action) => {
-        action.router.push(`/build/${ action.currentForm.id }`)
-      });
+      this.props.createForm(form, this.props.router).then(
+        (action) => action.router.push(`/build/${ action.currentForm.id }`),
+        (action) => this.setState({ error: "Scalawag! Form name can't be blank" })
+      );
     } else {
-      this.props.updateForm(form);
+      this.props.updateForm(form).then(
+        null,
+        (err) => this.setState({ error: "Scalawag! Form name can't be blank" })
+      );
     }
   }
 
@@ -121,11 +126,11 @@ class FormSettings extends React.Component {
             name="title"
             onChange={ this.handleChange }
             value={ this.state.title } />
+            <p className="field-error">{ this.state.error }</p>
         </label>
         <label className="form-settings-label">Description
-          <input
+          <textarea
             className="form-settings-input-textarea"
-            type="textarea"
             name="description"
             onChange={ this.handleChange }
             value={ this.state.description } />

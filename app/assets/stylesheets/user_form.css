@@ -32,6 +32,7 @@
 
 .user-generated-form-head {
   padding: 10px 20px 0 20px;
+  min-width: 600px;
 }
 
 .the-form {

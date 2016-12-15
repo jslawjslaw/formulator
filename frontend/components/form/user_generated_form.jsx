@@ -7,20 +7,20 @@ class UserGeneratedForm extends React.Component {
 
     this.state = {
       currentForm: ""
-    }
+    };
 
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
+    this.props.clearStateValues();
     this.props.fetchUserForm(this.props.permanent_link).then( (action) => {
       this.setState({ currentForm: action.currentForm });
     });
   }
 
 // this needs to create a bunch of entries
-  handleSubmit() {
-    debugger
+  handleSubmit(e) {
   }
 
   render() {
@@ -29,7 +29,7 @@ class UserGeneratedForm extends React.Component {
         return (
           <li
             key={ field.ord }>
-            <FieldLi field={ field } />
+            <FieldLi updateStateValues={ this.props.updateStateValues } field={ field }/>
           </li>
         );
       });

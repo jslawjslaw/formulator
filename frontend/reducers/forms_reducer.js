@@ -10,6 +10,7 @@ const _nullForms = Object.freeze({
 const FormsReducer = (state = _nullForms, action) => {
   Object.freeze(state);
   let newState;
+  let newCurrentForm;
   switch(action.type) {
     case RECEIVE_FORM:
       const currentForm = action.currentForm;
@@ -24,11 +25,13 @@ const FormsReducer = (state = _nullForms, action) => {
       return newState;
     case RECEIVE_FIELDS:
       newState = Object.assign({}, state);
-      newState.currentForm.fields = action.fields;
+      newCurrentForm = Object.assign({}, newState.currentForm);
+      newCurrentForm.fields = orderFields(action.fields);
+      newState.currentForm = newCurrentForm;
       return newState;
     case RECEIVE_STATE_FIELD:
       newState = Object.assign({}, state);
-      const newCurrentForm = Object.assign({}, newState.currentForm)
+      newCurrentForm = Object.assign({}, newState.currentForm);
       newCurrentForm.fields.splice(action.field.ord, 1);
       newCurrentForm.fields.splice(action.field.ord, 0, action.field);
       newState.currentForm = newCurrentForm;
@@ -37,5 +40,14 @@ const FormsReducer = (state = _nullForms, action) => {
       return state;
   }
 };
+
+function orderFields(fields) {
+  const orderedFields = new Array(fields.length);
+  fields.forEach( (field) => {
+    orderedFields[field.ord] = field;
+  });
+
+  return orderedFields;
+}
 
 export default FormsReducer;

@@ -5,6 +5,34 @@ export const RECEIVE_FIELD = "RECEIVE_FIELD";
 export const RECEIVE_FIELDS = "RECEIVE_FIELDS";
 export const RECEIVE_FIELD_INDEX = "RECEIVE_FIELD_INDEX";
 export const RECEIVE_STATE_FIELD = "RECEIVE_STATE_FIELD";
+export const RECEIVE_VALUE = "RECEIVE_VALUE";
+export const CLEAR_VALUES = "CLEAR_VALUES";
+
+export const receiveValue = (field, value) => {
+  return {
+      type: RECEIVE_VALUE,
+      value,
+      field
+  };
+};
+
+export function updateStateValues(field, value) {
+  return (dispatch) => {
+    dispatch(receiveValue(field, value));
+  };
+}
+
+export function clearStateValues() {
+  return (dispatch) => {
+    dispatch(clearValues());
+  };
+}
+
+export const clearValues = () => {
+  return {
+    type: CLEAR_VALUES
+  };
+}
 
 export const receiveField = field => {
   return {
@@ -34,7 +62,6 @@ export const receiveStateField = field => {
   };
 };
 
-
 export function changeFieldIndex(index) {
   return (dispatch) => {
     dispatch(receiveFieldIndex(index));
@@ -60,7 +87,9 @@ export function createField(field) {
 export function updateField(field) {
   return (dispatch) => {
     return APIUtil.updateField(field).then(
-      (fields) => dispatch(receiveFields(fields)),
+      (fields) => {
+        dispatch(receiveFields(fields))
+      },
       (err) => dispatch(receiveErrors(err))
     );
   };

@@ -15,7 +15,10 @@ class fieldSettingsTab extends React.Component {
         form_id: this.props.currentForm.fields[this.props.fieldIndex].form_id,
         id: this.props.currentForm.fields[this.props.fieldIndex].id
       };
+
+      this.state.error = "";
     }
+
 
     this.handleChange = this.handleChange.bind(this);
     this.updateField = this.updateField.bind(this);
@@ -82,7 +85,12 @@ class fieldSettingsTab extends React.Component {
       id: this.state.id
     };
 
-    this.props.updateField(field).then(() => this.props.changeTabIndex(0));
+    this.props.updateField(field).then(
+      () => this.props.changeTabIndex(0),
+      (action) => {
+        this.setState({ error: "Avast ye! ".concat(action.errors.responseJSON[0]) });
+      }
+    );
   }
 
   deleteField(e) {
@@ -97,7 +105,22 @@ class fieldSettingsTab extends React.Component {
       id: this.state.id
     };
 
-    this.props.deleteField(field).then(() => this.props.changeTabIndex(0));
+    if (field.ord + 1 === this.props.currentForm.fields.length) {
+      this.props.deleteField(field).then(() => this.props.changeTabIndex(0));
+    } else {
+      let fieldsToUpdate = [];
+      this.props.currentForm.fields.forEach( (uField) => {
+        if (uField.ord > field.ord) {
+          uField.ord = uField.ord - 1;
+          fieldsToUpdate.push(uField);
+        }
+      });
+
+      this.props.deleteField(field).then(() => {
+        fieldsToUpdate.forEach( (uField) => this.props.updateField(uField) )
+      }).then(() => this.props.changeTabIndex(0));
+    }
+
   }
 
   handleChange(e) {
@@ -190,12 +213,12 @@ class fieldSettingsTab extends React.Component {
             type="text"
             onChange={ this.handleChange }
             value={ this.state.label }/>
+            <p className="field-error">{ this.state.error }</p>
         </label>
         <label className="field-settings-label">User Instructions
-          <input
+          <textarea
             className="field-settings-textarea"
             name="userInstructions"
-            type="textarea"
             onChange={ this.handleChange }
             value={ this.state.user_instruction }/>
         </label>

@@ -42,7 +42,7 @@
 .side {
   background-color: #FDFDED;
   border: 1px solid #EFD586;
-  border-bottom-left-radius: 7px;
+  border-radius: 7px;
   height: auto;
   min-height: 700px;
   width: 370px;
@@ -100,6 +100,7 @@
   padding: 3px;
   margin: 0;
   border-radius: 7px;
+  font-family: Arial;
 }
 
 .form-settings-input-textarea {
@@ -111,6 +112,7 @@
   border-radius: 7px;
   height: 5em;
   text-align: justify;
+  font-family: "Lucida Grande","Lucida Sans Unicode", Tahoma, sans-serif;
 }
 
 .form-settings-radio span {
@@ -247,6 +249,7 @@
   margin: 0;
   border-radius: 7px;
   height: 5em;
+  font-family: "Lucida Grande","Lucida Sans Unicode", Tahoma, sans-serif;
 }
 
 .field-settings-button {
