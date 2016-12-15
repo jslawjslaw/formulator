@@ -1,5 +1,7 @@
 import React from 'react';
 import FieldLi from './form_field_li';
+import merge from 'lodash.merge'
+import { removeFalse } from '../../reducers/selectors';
 
 class UserGeneratedForm extends React.Component {
   constructor(props) {
@@ -19,8 +21,18 @@ class UserGeneratedForm extends React.Component {
     });
   }
 
-// this needs to create a bunch of entries
+// this needs to create a bunch of entries and a submission
   handleSubmit(e) {
+    let obj = {};
+    let newValues = merge([], this.props.values);
+    this.state.currentForm.fields.forEach( (field, idx) => {
+      if (Array.isArray(newValues[idx])) {
+        obj[field.id] = removeFalse(newValues[idx]);
+      } else {
+        obj[field.id] = newValues[idx];
+      }
+    });
+    this.props.createSubmission(this.state.currentForm.id, obj, this.props.router);
   }
 
   render() {

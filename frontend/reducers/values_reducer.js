@@ -6,12 +6,8 @@ const ValuesReducer = (state = [], action) => {
     case RECEIVE_VALUE:
       let newState = Object.assign([], state);
       newState = readyState(newState, action.field.ord);
-      if (action.field.field_type === 'checkbox') {
-        
-      } else {
-        newState.splice(action.field.ord, 1);
-        newState.splice(action.field.ord, 0, action.value);
-      }
+      newState.splice(action.field.ord, 1);
+      newState.splice(action.field.ord, 0, action.value);
       return newState;
     case CLEAR_VALUES:
       return [];

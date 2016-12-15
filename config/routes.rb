@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
     resources :forms, only: [:create, :show, :index, :update, :destroy] do
       resources :fields, only: [:create, :show, :index, :update, :destroy]
+      resources :submissions, only: [:create, :destroy]
     end
   end
 end

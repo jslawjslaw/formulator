@@ -1,5 +1,3 @@
-var merge = require('lodash.merge');
-
 export const getAllForms = ({ forms }) => {
   let arrayForms = [];
   Object.keys(forms.allForms).forEach( (formId) => {
@@ -8,4 +6,15 @@ export const getAllForms = ({ forms }) => {
   });
 
   return arrayForms;
+}
+
+export const removeFalse = (value) => {
+  const newValue = [];
+  value.forEach( (choice) => {
+    if (choice !== false) {
+      newValue.push(choice);
+    } 
+  });
+
+  return newValue;
 }

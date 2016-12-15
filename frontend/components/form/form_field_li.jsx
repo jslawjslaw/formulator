@@ -30,14 +30,15 @@ class FieldLi extends React.Component {
           this.setState({ radioValue });
         }
     } else if (this.state.field.field_type === 'checkbox') {
-        this.props.updateStateValues(this.state.field, choice);
-        let numChoices = this.state.field.choices.split("^") - 1;
         let checkboxValue = Object.assign([], this.state.checkboxValue);
-        if (checkboxValue[idx]) {
-          checkboxValue[idx] = false;
+        let numChoices = this.state.field.choices.split("^").length - 1;
+        checkboxValue = this.state.checkboxValue.slice(0, numChoices);
+        if (checkboxValue[idx] === false) {
+          checkboxValue[idx] = choice;
         } else {
-          checkboxValue[idx] = true;
+          checkboxValue[idx] = false;
         }
+        this.props.updateStateValues(this.state.field, checkboxValue);
         this.setState({ checkboxValue });
     }
   }
