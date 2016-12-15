@@ -1,0 +1,39 @@
+.grid-bar {
+  width: 100%;
+  color: #eee;
+  font-size: 100%;
+  line-height: 34px;
+  background: #262626;
+  padding-bottom: 1px;
+  border-radius: 7px;
+}
+
+.tbody {
+  margin: 0;
+  padding: 0;
+  vertical-align: top;
+  display: table-row-group;
+  font-size: small;
+  font-family: "Lucida Grande","Lucida Sans Unicode", Tahoma, sans-serif;
+  letter-spacing: .01em;
+}
+
+.n {
+
+}
+
+.td {
+  border-right: 1px solid #dedede;
+  border-bottom: 1px solid #eee;
+  min-width: 100px;
+  text-align: left;
+  font-size: 11px;
+  line-height: 1.6em;
+  padding: 5px 5px 6px 6px;
+  background: #fff;
+  color: #444;
+}
+
+.p {
+  margin-left: 7px;
+}

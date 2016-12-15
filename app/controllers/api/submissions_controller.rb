@@ -12,4 +12,9 @@ class Api::SubmissionsController < ApplicationController
       render json: ['Unable to submit form'], status: 422
     end
   end
+
+  def index
+    @submissions = Submission.where(form_id: params[:form_id].to_i)
+    render :index
+  end
 end

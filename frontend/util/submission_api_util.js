@@ -6,9 +6,9 @@ export const createSubmission = (formId, values) => {
   });
 };
 
-export const deleteSubmission = (formId, submissionId) => {
+export const fetchSubmissions = (formId) => {
   return $.ajax({
-    method: "DELETE",
-    url: `/api/forms/${formId}/submissions/${submissionId}`
+    method: "GET",
+    url: `/api/forms/${formId}/submissions`
   });
 }

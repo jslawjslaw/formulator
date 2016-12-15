@@ -32,6 +32,13 @@ class Form < ActiveRecord::Base
     dependent: :destroy
   )
 
+  has_many(
+    :submissions,
+    class_name: :Submission,
+    primary_key: :id,
+    foreign_key: :form_id
+  )
+
   def self.generate_permanent_link
     SecureRandom.urlsafe_base64(16)
   end
