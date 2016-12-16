@@ -348,3 +348,25 @@
   display: inline-block;
   vertical-align: middle;
 }
+
+.margin-top {
+  margin-top: 10px;
+}
+
+.password-button {
+  background-color: #d3d3d3;
+  border: 1px solid black;
+  padding: 3px;
+  border-radius: 3px;
+  margin-top: 5px;
+  margin-left: 108px;
+}
+
+.password-button:hover {
+  opacity: 0.75;
+}
+
+.updated {
+  margin-left: 117px;
+  color: #008000;
+}

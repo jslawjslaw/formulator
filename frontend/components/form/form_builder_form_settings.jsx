@@ -135,13 +135,13 @@ class FormSettings extends React.Component {
     let passwordInput;
     if (this.props.currentForm.private) {
       passwordInput = (
-        <label className="form-settings-label">Password
+        <label className="form-settings-label margin-top">Password
           <input
             type="text"
             className="form-settings-input-text"
             onChange={ this.changePassword }
             value={ this.state.password }/>
-          <button onClick={ this.createPassword }>Update</button>
+          <button className="password-button" onClick={ this.createPassword }>Update</button>
         </label>
       );
     } else {
@@ -184,7 +184,7 @@ class FormSettings extends React.Component {
               checked={ this.state.private }
               onChange={ this.handleChange }/><span className="radio-label"> Private</span>
               { passwordInput }
-              <p>{this.state.update}</p>
+              <p className="updated">{this.state.update}</p>
           </fieldset>
           { linkInput }
           <button

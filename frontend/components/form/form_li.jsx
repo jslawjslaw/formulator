@@ -8,6 +8,7 @@ class FormLi extends React.Component {
 
     this.delete = this.delete.bind(this);
     this.linkToBuilder = this.linkToBuilder.bind(this);
+    this.linkToSubmissions = this.linkToSubmissions.bind(this);
   }
 
   delete(e) {
@@ -18,6 +19,11 @@ class FormLi extends React.Component {
   linkToBuilder(e) {
     e.preventDefault();
     this.props.router.push(`/build/${this.props.form.id}`);
+  }
+
+  linkToSubmissions(e) {
+    e.preventDefault();
+    this.props.router.push(`/submissions/${this.props.form.id}`);
   }
 
   render() {
@@ -31,6 +37,7 @@ class FormLi extends React.Component {
         </Link>
         <ul className="li-ul group">
           <li className="li-buttons"><button className="form-search-li-button" onClick={ this.linkToBuilder }>Edit</button></li>
+          <li className="li-buttons"><button className="form-search-li-button" onClick={ this.linkToSubmissions }>Submissions</button></li>
           <li className="li-buttons"><button className="form-search-li-button" onClick={ this.delete }>Delete</button></li>
         </ul>
       </div>
