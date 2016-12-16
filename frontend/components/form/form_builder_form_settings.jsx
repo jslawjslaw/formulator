@@ -125,7 +125,7 @@ class FormSettings extends React.Component {
     if (this.state.permanent_link) {
       linkInput = (
         <label className="form-settings-label">Share Link
-          <input type="text" className="form-settings-input-text" readOnly value={ '/form/'.concat(this.state.permanent_link) }/>
+          <input type="text" className="form-settings-input-text" readOnly value={ 'formulator.herokuapp.com/#/form/'.concat(this.state.permanent_link) }/>
         </label>
       );
     } else {
