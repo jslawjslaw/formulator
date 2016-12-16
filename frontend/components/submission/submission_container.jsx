@@ -9,7 +9,7 @@ const mapStateToProps = (state, location) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-
+    
   };
 };
 

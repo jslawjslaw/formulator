@@ -10,7 +10,6 @@ class UserGeneratedForm extends React.Component {
 
     this.state = {
       currentForm: "",
-      isOpen: "",
       password: ""
     };
 
@@ -22,12 +21,14 @@ class UserGeneratedForm extends React.Component {
   componentDidMount() {
     this.props.clearStateValues();
     this.props.fetchUserForm(this.props.permanent_link).then( (action) => {
-      this.setState({ currentForm: action.currentForm, isOpen: action.currentForm.private });
+      this.setState({ currentForm: action.currentForm }, () => {
+        if (this.state.currentForm) {
+          if (this.state.currentForm.private) {
+            this.props.setIsOpen(true);
+          }
+        }
+      });
     });
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState({ isOpen: nextProps.check});
   }
 
 // this needs to create a bunch of entries and a submission
@@ -65,13 +66,13 @@ class UserGeneratedForm extends React.Component {
       return (
         <div>
           <Modal
-            isOpen={ this.state.isOpen }
+            isOpen={ this.props.isOpen }
             shouldCloseOnOverlayClick={false}
             contentLabel="Modal">
-            <label>Password:
-              <input type="password" onChange={ this.password } value={ this.state.password }/>
+            <label>Password
+              <input type="password" className="margin-left" onChange={ this.password } value={ this.state.password }/>
             </label>
-            <button onClick={ this.checkPassword }>Submit</button>
+            <button className="modal-button" onClick={ this.checkPassword }>Submit</button>
           </Modal>
 
           <div className="user-generated-form-show">

@@ -2,6 +2,7 @@ import ResultsView from './results_view';
 import { connect } from 'react-redux';
 import { fetchSubmissions } from '../../actions/submission_actions';
 import { fetchForm } from '../../actions/form_actions';
+import { logout } from '../../actions/session_actions';
 
 const mapStateToProps = (state, location) => {
   return {
@@ -12,7 +13,8 @@ const mapStateToProps = (state, location) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchSubmissions: (formId) => dispatch(fetchSubmissions(formId)),
-    fetchForm: (formId) => dispatch(fetchForm(formId))
+    fetchForm: (formId) => dispatch(fetchForm(formId)),
+    logout: () => dispatch(logout())
   };
 };
 

@@ -65,7 +65,8 @@ class FormBuilder extends React.Component {
                     <AddField
                       createField={ this.props.createField }
                       currentForm={ this.props.currentForm }
-                      changeTabIndex={ this.props.changeTabIndex }/>
+                      changeTabIndex={ this.props.changeTabIndex }
+                      changeFieldIndex={ this.props.changeFieldIndex }/>
                   </TabPanel>
 
                   <TabPanel>

@@ -23,6 +23,7 @@ class FormLi extends React.Component {
 
   linkToSubmissions(e) {
     e.preventDefault();
+    this.props.router.replace("/manager");
     this.props.router.push(`/submissions/${this.props.form.id}`);
   }
 

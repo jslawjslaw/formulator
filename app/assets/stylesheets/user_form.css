@@ -63,3 +63,20 @@
 .submit-button:hover {
   opacity: 0.5;
 }
+
+.modal-button {
+  background-color: #d3d3d3;
+  border: 1px solid black;
+  padding: 3px;
+  border-radius: 3px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.modal-button:hover {
+  opacity: 0.75;
+}
+
+.margin-left {
+  margin-left: 10px;
+}

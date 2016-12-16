@@ -14,7 +14,9 @@ class FormHeader extends React.Component {
   }
 
   changeTabIndex() {
-    this.props.changeTabIndex(0);
+    if(this.props.changeTabIndex) {
+      this.props.changeTabIndex(0);
+    }
   }
 
   render() {
