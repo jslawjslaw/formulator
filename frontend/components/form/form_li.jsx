@@ -6,19 +6,8 @@ class FormLi extends React.Component {
   constructor(props) {
     super(props);
 
-    this.updateForm = this.updateForm.bind(this);
     this.delete = this.delete.bind(this);
     this.linkToBuilder = this.linkToBuilder.bind(this);
-  }
-
-  updateForm(e) {
-    let newForm;
-    if (this.props.form.private) {
-      newForm = merge({}, this.props.form, { private: false });
-    } else {
-      newForm = merge({}, this.props.form, { private: true });
-    }
-    this.props.updateForm(newForm, "index");
   }
 
   delete(e) {
@@ -42,7 +31,6 @@ class FormLi extends React.Component {
         </Link>
         <ul className="li-ul group">
           <li className="li-buttons"><button className="form-search-li-button" onClick={ this.linkToBuilder }>Edit</button></li>
-          <li className="li-buttons"><button className="form-search-li-button" onClick={ this.updateForm }>{ button }</button></li>
           <li className="li-buttons"><button className="form-search-li-button" onClick={ this.delete }>Delete</button></li>
         </ul>
       </div>

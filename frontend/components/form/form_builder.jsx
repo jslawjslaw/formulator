@@ -57,7 +57,8 @@ class FormBuilder extends React.Component {
                       updateForm={ this.props.updateForm }
                       router={ this.props.router }
                       updateStateForm={ this.props.updateStateForm }
-                      errors={ this.props.errors }/>
+                      errors={ this.props.errors }
+                      createPassword={ this.props.createPassword }/>
                   </TabPanel>
 
                   <TabPanel>

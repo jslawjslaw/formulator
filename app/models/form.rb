@@ -49,4 +49,21 @@ class Form < ActiveRecord::Base
     end
     self.permanent_link
   end
+
+  def password=(password)
+    self.password_digest = BCrypt::Password.create(password)
+  end
+
+  def is_password?(password)
+    BCrypt::Password.new(self.password_digest).is_password?(password)
+  end
+
+  def self.check_password(form_id, password)
+    form = Form.find(form_id)
+    if form && form.is_password?(password)
+      true
+    else
+      false
+    end
+  end
 end

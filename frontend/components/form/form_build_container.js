@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import FormBuilder from './form_builder';
 import { logout } from '../../actions/session_actions';
-import { fetchForm, updateForm, createForm, updateStateForm } from '../../actions/form_actions';
+import { fetchForm, updateForm, createForm, updateStateForm, createPassword } from '../../actions/form_actions';
 import { createField, updateField, deleteField, changeFieldIndex, updateStateField } from '../../actions/field_actions';
 import { changeTabIndex } from '../../actions/tab_actions';
 
@@ -33,7 +33,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     changeFieldIndex: (index) => dispatch(changeFieldIndex(index)),
     changeTabIndex: (index) => dispatch(changeTabIndex(index)),
     updateStateForm: (form) => dispatch(updateStateForm(form)),
-    updateStateField: (field) => dispatch(updateStateField(field))
+    updateStateField: (field) => dispatch(updateStateField(field)),
+    createPassword: (formId, password) => dispatch(createPassword(formId, password))
   };
 };
 

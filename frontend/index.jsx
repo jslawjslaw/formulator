@@ -4,6 +4,7 @@ import configureStore from './store/store';
 import Root from './components/root';
 import { receiveForm } from './util/form_api_util';
 import { createForm, fetchForms } from './actions/form_actions';
+import Modal from 'react-modal';
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById('root');
@@ -22,5 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
   window.createForm = createForm;
   window.fetchForms = fetchForms;
 
+  Modal.setAppElement(document.body);
   ReactDOM.render(<Root store={ store } />, root);
 });

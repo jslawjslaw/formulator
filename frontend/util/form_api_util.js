@@ -41,3 +41,19 @@ export const fetchFormByPL = (permanent_link) => {
     url: `/api/forms/fetch_form/${ permanent_link }`
   });
 }
+
+export const checkPassword = (form_id, password) => {
+  return $.ajax({
+    method: "GET",
+    url: `/api/forms/check_password`,
+    data: { form_id, password }
+  });
+}
+
+export const createPassword = (form_id, password) => {
+  return $.ajax({
+    method: "POST",
+    url: `/api/forms/create_password`,
+    data: { form_id, password }
+  });
+}

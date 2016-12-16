@@ -14,11 +14,15 @@ class FormSettings extends React.Component {
       author_id: "",
       button: "",
       id: "",
-      error: ""
+      error: "",
+      password: "",
+      update: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.createPassword = this.createPassword.bind(this);
+    this.changePassword = this.changePassword.bind(this);
   }
 
 // Called on initial render
@@ -32,7 +36,8 @@ class FormSettings extends React.Component {
       permanent_link: nextProps.currentForm.permanent_link,
       author_id: nextProps.currentForm.author_id,
       button,
-      id: nextProps.currentForm.id
+      id: nextProps.currentForm.id,
+      password: "******"
     });
   }
 
@@ -47,7 +52,8 @@ class FormSettings extends React.Component {
       permanent_link: this.props.currentForm.permanent_link,
       author_id: this.props.currentForm.author_id,
       button,
-      id: this.props.currentForm.id
+      id: this.props.currentForm.id,
+      password: "******"
     });
   }
 
@@ -82,6 +88,7 @@ class FormSettings extends React.Component {
       description: this.state.description,
       author_id: this.state.author_id,
       permanent_link: this.state.permanent_link,
+      fields: this.state.fields,
       private: this.state.private,
       id: this.props.currentForm.id
     };
@@ -100,9 +107,17 @@ class FormSettings extends React.Component {
     } else {
       this.props.updateForm(form).then(
         null,
-        (err) => this.setState({ error: "Scalawag! Form name can't be blank" })
+        () => this.setState({ error: "Scalawag! Form name can't be blank" })
       );
     }
+  }
+
+  changePassword(e) {
+    this.setState({ password: e.currentTarget.value });
+  }
+
+  createPassword() {
+    this.setState({ update: "Updated!"}, () => this.props.createPassword(this.state.id, this.state.password) );
   }
 
   render() {
@@ -114,7 +129,23 @@ class FormSettings extends React.Component {
         </label>
       );
     } else {
-      linkInput = "";
+      linkInput = <div></div>;
+    }
+
+    let passwordInput;
+    if (this.props.currentForm.private) {
+      passwordInput = (
+        <label className="form-settings-label">Password
+          <input
+            type="text"
+            className="form-settings-input-text"
+            onChange={ this.changePassword }
+            value={ this.state.password }/>
+          <button onClick={ this.createPassword }>Update</button>
+        </label>
+      );
+    } else {
+      passwordInput = <div></div>;
     }
 
     return (
@@ -152,6 +183,8 @@ class FormSettings extends React.Component {
               value={ true }
               checked={ this.state.private }
               onChange={ this.handleChange }/><span className="radio-label"> Private</span>
+              { passwordInput }
+              <p>{this.state.update}</p>
           </fieldset>
           { linkInput }
           <button

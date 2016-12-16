@@ -23,6 +23,22 @@ class Api::FormsController < ApplicationController
     render :show
   end
 
+  def check_password
+    if Form.check_password(params[:form_id], params[:password])
+      render json: ["Password valid"]
+    else
+      render json: ["Invalid password"], status: 422
+    end
+  end
+
+  def create_password
+    @form = Form.find(params[:form_id])
+    @form.password = params[:password]
+    @form.private = true
+    @form.save!
+    render :show
+  end
+
   def update
     @form = Form.find(params[:form][:id])
     if @form.update(form_params)

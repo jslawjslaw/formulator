@@ -3,6 +3,7 @@ import { receiveErrors } from './error_actions';
 
 export const RECEIVE_FORM = "RECEIVE_FORM";
 export const RECEIVE_FORMS = "RECEIVE_FORMS";
+export const PASS_CHECK = "PASS_CHECK";
 
 export const receiveForm = (currentForm, router) => {
   return {
@@ -19,7 +20,13 @@ export const receiveForms = forms => {
   };
 };
 
-//
+export const passCheck = check => {
+  return {
+    type: PASS_CHECK,
+    check
+  };
+}
+
 export function createForm(form, router) {
   return (dispatch) => {
     return APIUtil.createForm(form).then(
@@ -91,4 +98,20 @@ export function fetchUserForm(permanent_link) {
       (err) => dispatch(receiveErrors(err))
     );
   };
+}
+
+export function createPassword(formId, password) {
+  return (dispatch) => {
+    return APIUtil.createPassword(formId, password);
+  };
+}
+
+export function checkPassword(formId, password) {
+
+  return (dispatch) => {
+    return APIUtil.checkPassword(formId, password).then(
+      () => dispatch(passCheck(true)),
+      () => dispatch(passCheck(false))
+    );
+  }
 }

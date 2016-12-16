@@ -56,7 +56,7 @@ class fieldSettingsTab extends React.Component {
 
   addChoice(e) {
     e.preventDefault();
-    this.setState({ choices: this.state.choices.concat(" ^") }, () => {
+    this.setState({ choices: this.state.choices.concat("^") }, () => {
       this.props.updateStateField(this.state);
     });
   }

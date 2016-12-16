@@ -1,10 +1,11 @@
-import { RECEIVE_FORMS, RECEIVE_FORM } from '../actions/form_actions';
+import { RECEIVE_FORMS, RECEIVE_FORM, PASS_CHECK } from '../actions/form_actions';
 import { RECEIVE_FIELDS, RECEIVE_FIELD, RECEIVE_STATE_FIELD } from '../actions/field_actions';
 import merge from 'lodash/merge';
 
 const _nullForms = Object.freeze({
   allForms: {},
-  currentForm: { fields: [] }
+  currentForm: { fields: [] },
+  passCheck: false
 });
 
 const FormsReducer = (state = _nullForms, action) => {
@@ -35,6 +36,10 @@ const FormsReducer = (state = _nullForms, action) => {
       newCurrentForm.fields.splice(action.field.ord, 1);
       newCurrentForm.fields.splice(action.field.ord, 0, action.field);
       newState.currentForm = newCurrentForm;
+      return newState;
+    case PASS_CHECK:
+      newState = Object.assign({}, state);
+      newState.passCheck = action.check;
       return newState;
     default:
       return state;
