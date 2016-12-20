@@ -16,15 +16,15 @@
         1: {
           id: 1
           type: "Input"
-	  label: "Text goes here"
-	  user_instruction: ""
+      	  label: "Text goes here"
+      	  user_instruction: ""
         }
-	2: {
+	      2: {
           id: 2
           type: "Select"
-	  label: "Option 1"
-	  user_instruction: "sample user instruction"
-	}
+      	  label: "Option 1"
+      	  user_instruction: "sample user instruction"
+	      }
       }
     }
   },
@@ -33,16 +33,16 @@
       id: 1,
       form_id: 1
       entries: {
-	1: {
-	  id: 1,
-	  field_id: 1,
-	  value: "User input"
-	}
-	2: {
-	  id: 2,
-	  field_id: 2,
-	  value: "Other user input"
-	}
+      	1: {
+      	  id: 1,
+      	  field_id: 1,
+      	  value: "User input"
+      	}
+      	2: {
+      	  id: 2,
+      	  field_id: 2,
+      	  value: "Other user input"
+      	}
       }
     }
   }

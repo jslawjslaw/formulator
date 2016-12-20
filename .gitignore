@@ -22,3 +22,6 @@ bundle.js.map
 
 # Ignore DS_Store
 .DS_Store
+
+# Ignore byebug_history
+.byebug_history
