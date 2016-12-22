@@ -35,6 +35,8 @@ value           | string    | not null
 
 This would have avoided the need for some complex logic to render the choices appropriately.
 
+![Formbuilder Image](https://github.com/jslawjslaw/formulator/blob/master/screenshots/form_builder.png)
+
 ### Submissions
 
 Submissions belong to a form and represent one row in the submissions table on the results view page. When an end user clicks submit on the form page, the database creates a submission, as well as a number of entries. This process happens within a transaction so that if any part of the creation process fails, the database rolls back updates made before the failure.
@@ -42,6 +44,8 @@ Submissions belong to a form and represent one row in the submissions table on t
 ### Entries
 
 Entries are the user responses to every field in the form. Hence, they belong to a field and they belong to a specific submission. Every cell in the submission results table corresponds to a single entry in the database.
+
+![Submissions Image](https://github.com/jslawjslaw/formulator/blob/master/screenshots/submission_table.png)
 
 ## Future Features/Endeavors
 
