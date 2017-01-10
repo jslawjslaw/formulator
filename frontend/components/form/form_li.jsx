@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router';
-import merge from 'lodash/merge';
 
 class FormLi extends React.Component {
   constructor(props) {

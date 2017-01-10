@@ -42,6 +42,10 @@ class AddField extends React.Component {
     }
   }
 
+  componentDidUpdate(props, prevState) {
+    props.changeFieldIndex(prevState.ord);
+  }
+
   render() {
     return(
       <section className="add-field-button-section">

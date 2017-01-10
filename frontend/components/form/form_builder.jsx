@@ -4,7 +4,6 @@ import FormSettingsTab from './form_builder_form_settings';
 import FieldSettingsTab from './form_builder_field_settings';
 import Form from './form';
 import AddField from './form_builder_add_field';
-import merge from 'lodash/merge';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 class FormBuilder extends React.Component {

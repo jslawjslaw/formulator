@@ -1,6 +1,6 @@
 import { RECEIVE_FORMS, RECEIVE_FORM, PASS_CHECK } from '../actions/form_actions';
 import { RECEIVE_FIELDS, RECEIVE_FIELD, RECEIVE_STATE_FIELD } from '../actions/field_actions';
-import merge from 'lodash/merge';
+import { merge } from 'lodash';
 
 const _nullForms = Object.freeze({
   allForms: {},

@@ -1,6 +1,6 @@
 import React from 'react';
 import FieldLi from './form_field_li';
-import merge from 'lodash.merge'
+import { merge } from 'lodash';
 import { removeFalse } from '../../reducers/selectors';
 import Modal from 'react-modal';
 

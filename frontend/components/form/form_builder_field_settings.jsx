@@ -1,5 +1,4 @@
 import React from 'react';
-import merge from 'lodash/merge';
 
 class fieldSettingsTab extends React.Component {
   constructor(props) {
@@ -214,6 +213,14 @@ class fieldSettingsTab extends React.Component {
             onChange={ this.handleChange }
             value={ this.state.label }/>
             <p className="field-error">{ this.state.error }</p>
+        </label>
+        <label className="field-settings-label">Position
+          <input
+            className="field-settings-input"
+            name="label"
+            type="text"
+            readOnly
+            value={ this.state.ord }/>
         </label>
         <label className="field-settings-label">User Instructions
           <textarea

@@ -1,5 +1,4 @@
 import React from 'react';
-import merge from 'lodash/merge';
 
 class FormSettings extends React.Component {
   constructor(props) {
@@ -106,7 +105,7 @@ class FormSettings extends React.Component {
       );
     } else {
       this.props.updateForm(form).then(
-        null,
+        () => this.setState({ error: "" }),
         () => this.setState({ error: "Scalawag! Form name can't be blank" })
       );
     }
