@@ -9,11 +9,22 @@ class ResultsView extends React.Component {
       currentForm: "",
       submissions: ""
     };
+
+    this.orderFields = this.orderFields.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchSubmissions(this.props.routeParams.formId).then( (action) => this.setState({ submissions: action.submissions }) );
     this.props.fetchForm(this.props.routeParams.formId).then( (action) => this.setState({ currentForm: action.currentForm }) );
+  }
+
+  orderFields() {
+    let ord = [];
+    this.state.currentForm.fields.forEach( (field) => {
+      ord.push(field.id);
+    });
+
+    return ord;
   }
 
   render() {
@@ -27,22 +38,27 @@ class ResultsView extends React.Component {
       });
       headers.splice(0, 0, <td key={ 0 }>#</td>)
 
-      let subs = this.state.submissions
+
+      let subs = this.state.submissions;
+      let ord = this.orderFields();
       let counter = 0;
       for(var key in subs) {
         if(subs.hasOwnProperty(key)) {
-          let cols = subs[key].map( (entry, idx) => {
-            return (
-              <td className="td" key={ idx + 1 }>{ entry.value }</td>
+          let cols = [];
+          for (let i = 0; i < ord.length + 1; i++) {
+            cols.push(<td className="td" key={ i }></td>);
+          }
+          cols[0] = (<td className="td" key={ 0 }>{ counter }</td>);
+          subs[key].forEach( (entry) => {
+            cols[ord.indexOf(entry.field_id) + 1] = (
+              <td className="td" key={ ord.indexOf(entry.field_id) + 1 }>{ entry.value }</td>
             );
           });
-          cols.splice(0, 0, <td className="td" key={ 0 }>{ counter }</td>);
           counter = counter + 1;
           rows.push(<tr>{ cols }</tr>)
         }
       }
     }
-
 
     return(
       <div className="body">
@@ -57,14 +73,16 @@ class ResultsView extends React.Component {
               <p className="p">{ this.state.currentForm.title }</p>
             </section>
 
-            <table className="grid-bar">
-              <tbody className="tbody">
-                <tr>
-                  { headers }
-                </tr>
-                { rows }
-              </tbody>
-            </table>
+            <div className="table-container">
+              <table className="grid-bar">
+                <tbody className="tbody">
+                  <tr>
+                    { headers }
+                  </tr>
+                  { rows }
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>

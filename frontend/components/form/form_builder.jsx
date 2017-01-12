@@ -75,6 +75,7 @@ class FormBuilder extends React.Component {
                       deleteField={ this.props.deleteField }
                       fieldIndex={ this.props.fieldIndex }
                       changeTabIndex={ this.props.changeTabIndex }
+                      changeFieldIndex={ this.props.changeFieldIndex }
                       updateStateField={ this.props.updateStateField }
                       errors={ this.props.errors }/>
                   </TabPanel>
@@ -84,6 +85,7 @@ class FormBuilder extends React.Component {
               <Form
                 changeTabIndex={ this.props.changeTabIndex }
                 changeFieldIndex={ this.props.changeFieldIndex }
+                updateFields={ this.props.updateFields }
                 currentForm={ this.props.currentForm }/>
             </div>
 

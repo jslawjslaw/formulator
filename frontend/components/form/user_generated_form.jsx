@@ -1,7 +1,7 @@
 import React from 'react';
-import FieldLi from './form_field_li';
+import FieldLi from './user_form_field_li';
 import { merge } from 'lodash';
-import { removeFalse } from '../../reducers/selectors';
+import { removeFalse, orderFields } from '../../reducers/selectors';
 import Modal from 'react-modal';
 
 class UserGeneratedForm extends React.Component {
@@ -21,7 +21,9 @@ class UserGeneratedForm extends React.Component {
   componentDidMount() {
     this.props.clearStateValues();
     this.props.fetchUserForm(this.props.permanent_link).then( (action) => {
-      this.setState({ currentForm: action.currentForm }, () => {
+      let newCurrentForm = Object.assign({}, action.currentForm);
+      newCurrentForm.fields = orderFields(action.currentForm.fields);
+      this.setState({ currentForm: newCurrentForm }, () => {
         if (this.state.currentForm) {
           if (this.state.currentForm.private) {
             this.props.setIsOpen(true);
@@ -36,6 +38,7 @@ class UserGeneratedForm extends React.Component {
     let obj = {};
     let newValues = merge([], this.props.values);
     this.state.currentForm.fields.forEach( (field, idx) => {
+      debugger
       if (Array.isArray(newValues[idx])) {
         obj[field.id] = removeFalse(newValues[idx]);
       } else {

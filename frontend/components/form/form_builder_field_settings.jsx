@@ -16,8 +16,8 @@ class fieldSettingsTab extends React.Component {
       };
 
       this.state.error = "";
+      this.state.choiceError = "";
     }
-
 
     this.handleChange = this.handleChange.bind(this);
     this.updateField = this.updateField.bind(this);
@@ -28,15 +28,31 @@ class fieldSettingsTab extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({
-      label: this.props.currentForm.fields[nextProps.fieldIndex].label,
-      user_instruction: this.props.currentForm.fields[nextProps.fieldIndex].user_instruction,
-      ord: this.props.currentForm.fields[nextProps.fieldIndex].ord,
-      choices: this.props.currentForm.fields[nextProps.fieldIndex].choices,
-      field_type: this.props.currentForm.fields[nextProps.fieldIndex].field_type,
-      form_id: this.props.currentForm.fields[nextProps.fieldIndex].form_id,
-      id: this.props.currentForm.fields[nextProps.fieldIndex].id
-    });
+    if (nextProps.currentForm.fields.length) {
+      if (nextProps.fieldIndex < nextProps.currentForm.fields.length) {
+        this.setState({
+          label: nextProps.currentForm.fields[nextProps.fieldIndex].label,
+          user_instruction: nextProps.currentForm.fields[nextProps.fieldIndex].user_instruction,
+          ord: nextProps.currentForm.fields[nextProps.fieldIndex].ord,
+          choices: nextProps.currentForm.fields[nextProps.fieldIndex].choices,
+          field_type: nextProps.currentForm.fields[nextProps.fieldIndex].field_type,
+          form_id: nextProps.currentForm.fields[nextProps.fieldIndex].form_id,
+          id: nextProps.currentForm.fields[nextProps.fieldIndex].id,
+          choiceError: ""
+        });
+      } else {
+        this.setState({
+          label: this.props.currentForm.fields[nextProps.fieldIndex].label,
+          user_instruction: this.props.currentForm.fields[nextProps.fieldIndex].user_instruction,
+          ord: this.props.currentForm.fields[nextProps.fieldIndex].ord,
+          choices: this.props.currentForm.fields[nextProps.fieldIndex].choices,
+          field_type: this.props.currentForm.fields[nextProps.fieldIndex].field_type,
+          form_id: this.props.currentForm.fields[nextProps.fieldIndex].form_id,
+          id: this.props.currentForm.fields[nextProps.fieldIndex].id,
+          choiceError: ""
+        });
+      }
+    }
   }
 
   updateChoice(idx) {
@@ -46,7 +62,7 @@ class fieldSettingsTab extends React.Component {
         choices = choices.slice(0, choices.length-1);
         choices[idx] = e.currentTarget.value;
         choices = choices.join("^").concat("^");
-        this.setState({ choices }, () => {
+        this.setState({ choices, choiceError: "" }, () => {
           this.props.updateStateField(this.state);
         });
       }
@@ -55,9 +71,13 @@ class fieldSettingsTab extends React.Component {
 
   addChoice(e) {
     e.preventDefault();
-    this.setState({ choices: this.state.choices.concat("^") }, () => {
-      this.props.updateStateField(this.state);
-    });
+    if (this.state.choices.split("^").length - 1 < 10) {
+      this.setState({ choices: this.state.choices.concat("^"), choiceError: "" }, () => {
+        this.props.updateStateField(this.state);
+      });
+    } else {
+      this.setState({ choiceError: "No more choices!" })
+    }
   }
 
   removeChoice(idx) {
@@ -66,7 +86,7 @@ class fieldSettingsTab extends React.Component {
       choices = choices.slice(0, choices.length-1);
       choices.splice(idx, 1);
       choices = choices.join("^").concat("^");
-      this.setState({ choices }, () => {
+      this.setState({ choices, choiceError: "" }, () => {
         this.props.updateStateField(this.state);
       });
     }
@@ -104,8 +124,16 @@ class fieldSettingsTab extends React.Component {
       id: this.state.id
     };
 
+    if (this.props.fieldIndex !== 0) {
+      this.props.changeFieldIndex(this.props.fieldIndex - 1);
+    } else if (this.props.currentForm.fields.length > 1) {
+      this.props.changeFieldIndex(1);
+    }
+
     if (field.ord + 1 === this.props.currentForm.fields.length) {
-      this.props.deleteField(field).then(() => this.props.changeTabIndex(0));
+      this.props.deleteField(field).then(() => {
+        this.props.changeTabIndex(0);
+      });
     } else {
       let fieldsToUpdate = [];
       this.props.currentForm.fields.forEach( (uField) => {
@@ -117,7 +145,9 @@ class fieldSettingsTab extends React.Component {
 
       this.props.deleteField(field).then(() => {
         fieldsToUpdate.forEach( (uField) => this.props.updateField(uField) )
-      }).then(() => this.props.changeTabIndex(0));
+      }).then(() => {
+        this.props.changeTabIndex(0);
+      });
     }
 
   }
@@ -125,11 +155,11 @@ class fieldSettingsTab extends React.Component {
   handleChange(e) {
     e.preventDefault();
     if (e.currentTarget.name === "label") {
-      this.setState({ label: e.currentTarget.value }, () => {
+      this.setState({ label: e.currentTarget.value, choiceError: "" }, () => {
         this.props.updateStateField(this.state);
       });
     } else if (e.currentTarget.name === "userInstructions") {
-      this.setState({ user_instruction: e.currentTarget.value }, () => {
+      this.setState({ user_instruction: e.currentTarget.value, choiceError: "" }, () => {
         this.props.updateStateField(this.state);
       });
     }
@@ -189,11 +219,14 @@ class fieldSettingsTab extends React.Component {
           <ul className="choices-ul">
             { choices }
           </ul>
+          <p className="field-error choice-error">{ this.state.choiceError }</p>
         </fieldset>
       );
     } else {
       fieldset = "";
     }
+
+    const userInstruction = this.state.user_instruction || "";
 
     return (
       <form>
@@ -227,7 +260,7 @@ class fieldSettingsTab extends React.Component {
             className="field-settings-textarea"
             name="userInstructions"
             onChange={ this.handleChange }
-            value={ this.state.user_instruction }/>
+            value={ userInstruction }/>
         </label>
         { fieldset }
         <button

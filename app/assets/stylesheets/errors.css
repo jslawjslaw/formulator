@@ -1,8 +1,5 @@
 .field-error {
   background-color: #ffe4b5;
-  border-left: 1px solid gold;
-  border-bottom: 1px solid gold;
-  border-right: 1px solid gold;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
   color: red;
@@ -10,4 +7,8 @@
   min-width: 90%;
   text-align: center;
   margin-left: 4px;
+}
+
+.choice-error {
+  margin-left: 15px;
 }

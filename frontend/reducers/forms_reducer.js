@@ -1,6 +1,7 @@
 import { RECEIVE_FORMS, RECEIVE_FORM, PASS_CHECK } from '../actions/form_actions';
 import { RECEIVE_FIELDS, RECEIVE_FIELD, RECEIVE_STATE_FIELD } from '../actions/field_actions';
 import { merge } from 'lodash';
+import { orderFields } from './selectors';
 
 const _nullForms = Object.freeze({
   allForms: {},
@@ -15,6 +16,7 @@ const FormsReducer = (state = _nullForms, action) => {
   switch(action.type) {
     case RECEIVE_FORM:
       const currentForm = action.currentForm;
+      currentForm.fields = orderFields(currentForm.fields);
       newState = Object.assign({}, state);
       return merge({}, _nullForms, { currentForm, allForms: newState.allForms });
     case RECEIVE_FORMS:
@@ -45,14 +47,5 @@ const FormsReducer = (state = _nullForms, action) => {
       return state;
   }
 };
-
-function orderFields(fields) {
-  const orderedFields = new Array(fields.length);
-  fields.forEach( (field) => {
-    orderedFields[field.ord] = field;
-  });
-
-  return orderedFields;
-}
 
 export default FormsReducer;

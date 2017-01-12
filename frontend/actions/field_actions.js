@@ -87,12 +87,19 @@ export function createField(field) {
 export function updateField(field) {
   return (dispatch) => {
     return APIUtil.updateField(field).then(
-      (fields) => {
-        dispatch(receiveFields(fields))
-      },
+      (fields) => dispatch(receiveFields(fields)),
       (err) => dispatch(receiveErrors(err))
     );
   };
+}
+
+export function updateFields(field1, field2) {
+  return (dispatch) => {
+    return APIUtil.updateFields(field1, field2).then(
+      (fields) => dispatch(receiveFields(fields)),
+      (err) => dispatch(receiveErrors(err))
+    )
+  }
 }
 
 export function deleteField(field) {

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   match 'api/forms/fetch_form/:permanent_link' => 'api/forms#fetch_form', via: :get
   match 'api/forms/check_password' => 'api/forms#check_password', via: :get
   match 'api/forms/create_password' => 'api/forms#create_password', via: :post
+  match 'api/fields/update_field_ords' => 'api/fields#update_field_ords', via: :patch
 
   namespace :api, defaults: {format: :json} do
     resources :users, only: [:create]

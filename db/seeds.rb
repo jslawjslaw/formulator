@@ -36,3 +36,7 @@ Field.create!([
   { field_type: "checkbox", label: "Do you follow politics?", form_id: Form.find_by(title: "2016 Election Poll").id, ord: 2, choices: "Yes^No^Sometimes^" },
   { field_type: "checkbox", label: "Did you vote?", form_id: Form.find_by(title: "2016 Election Poll").id, ord: 3, choices: "Yes^No^Maybe^" }
 ])
+
+Submission.destroy_all
+
+Entry.destroy_all

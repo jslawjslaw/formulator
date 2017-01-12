@@ -37,6 +37,7 @@
 
 .user-form-field {
   padding: 5px;
+  cursor: pointer;
 }
 
 .user-form-field:hover {

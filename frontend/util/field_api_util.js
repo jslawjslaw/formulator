@@ -14,6 +14,14 @@ export const updateField = (field) => {
   });
 };
 
+export const updateFields = (field1, field2) => {
+  return $.ajax({
+    method: "PATCH",
+    url: "api/fields/update_field_ords",
+    data: { field1, field2 }
+  });
+}
+
 export const deleteField = (field) => {
   return $.ajax({
     method: "DELETE",

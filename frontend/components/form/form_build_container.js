@@ -2,8 +2,9 @@ import { connect } from 'react-redux';
 import FormBuilder from './form_builder';
 import { logout } from '../../actions/session_actions';
 import { fetchForm, updateForm, createForm, updateStateForm, createPassword } from '../../actions/form_actions';
-import { createField, updateField, deleteField, changeFieldIndex, updateStateField } from '../../actions/field_actions';
+import { createField, updateField, deleteField, changeFieldIndex, updateStateField, updateFields } from '../../actions/field_actions';
 import { changeTabIndex } from '../../actions/tab_actions';
+import { orderFields } from '../../reducers/selectors';
 
 const mapStateToProps = (state) => {
   let userId;
@@ -12,11 +13,13 @@ const mapStateToProps = (state) => {
   } else {
     userId = null;
   }
+  let newCurrentForm = Object.assign({}, state.forms.currentForm);
+  newCurrentForm.fields = orderFields(state.forms.currentForm.fields);
   return {
     userId,
     fieldIndex: state.fieldIndex,
     tabIndex: state.tabIndex,
-    currentForm: state.forms.currentForm,
+    currentForm: newCurrentForm,
     errors: state.forms.errors
    };
 };
@@ -34,7 +37,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     changeTabIndex: (index) => dispatch(changeTabIndex(index)),
     updateStateForm: (form) => dispatch(updateStateForm(form)),
     updateStateField: (field) => dispatch(updateStateField(field)),
-    createPassword: (formId, password) => dispatch(createPassword(formId, password))
+    createPassword: (formId, password) => dispatch(createPassword(formId, password)),
+    updateFields: (field1, field2) => dispatch(updateFields(field1, field2))
   };
 };
 

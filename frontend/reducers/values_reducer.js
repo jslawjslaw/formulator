@@ -1,4 +1,5 @@
 import { RECEIVE_VALUE, CLEAR_VALUES } from '../actions/field_actions';
+import { readyState } from './selectors';
 
 const ValuesReducer = (state = [], action) => {
   Object.freeze(state);
@@ -15,17 +16,5 @@ const ValuesReducer = (state = [], action) => {
       return state;
   }
 };
-
-// adds necessary padding to array
-function readyState(newState, ord) {
-  if (newState.length <= ord) {
-    const diff = ord + 1 - newState.length;
-    for(let i = 0; i < diff; i++) {
-      newState.push("");
-    }
-  }
-
-  return newState;
-}
 
 export default ValuesReducer;

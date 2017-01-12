@@ -8,4 +8,12 @@ class Field < ActiveRecord::Base
     foreign_key: :form_id
   )
 
+  has_many(
+    :entries,
+    class_name: :Entry,
+    primary_key: :id,
+    foreign_key: :field_id,
+    dependent: :destroy
+  )
+
 end

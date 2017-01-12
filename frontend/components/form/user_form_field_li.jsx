@@ -1,66 +1,4 @@
 import React from 'react';
-import ItemTypes from './ItemTypes';
-import { DragSource, DropTarget } from 'react-dnd';
-import { findDOMNode } from 'react-dom';
-
-const cardSource = {
-  beginDrag(props) {
-    return {
-      id: props.field.id,
-      index: props.field.ord
-    }
-  }
-}
-
-const cardTarget = {
-  hover(props, monitor, component) {
-    const dragIndex = monitor.getItem().index;
-    const hoverIndex = props.field.ord;
-
-    if (dragIndex === hoverIndex) {
-      return;
-    }
-
-    // Determine rectangle on screen
-    const hoverBoundingRect = findDOMNode(component).getBoundingClientRect();
-
-    // Get vertical middle
-    const hoverMiddleY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
-
-    // Determine mouse position
-    const clientOffset = monitor.getClientOffset();
-
-    // Get pixels to the top
-    const hoverClientY = clientOffset.y - hoverBoundingRect.top;
-
-
-    // Dragging downwards
-    if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
-      return;
-    }
-
-    // Dragging upwards
-    if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) {
-      return;
-    }
-
-    // Time to actually perform the action
-    props.moveCard(dragIndex, hoverIndex);
-
-    // Note: we're mutating the monitor item here!
-    // Generally it's better to avoid mutations,
-    // but it's good here for the sake of performance
-    // to avoid expensive index searches.
-    monitor.getItem().index = hoverIndex;
-  }
-}
-
-function collect(connect, monitor) {
-  return {
-    connectDragSource: connect.dragSource(),
-    isDragging: monitor.isDragging()
-  };
-}
 
 class FieldLi extends React.Component {
   constructor(props) {
@@ -174,27 +112,14 @@ class FieldLi extends React.Component {
       input = <input onChange={ this.change } className="user-form-field-input" type={ this.props.field.field_type }/>
     }
 
-    const userInstruction = this.props.field.user_instruction || "";
-
-    return this.props.connectDragSource(this.props.connectDropTarget(
+    return (
       <section>
         <p className="user-form-field-label">{ this.props.field.label }</p>
-        <p className="user-form-field-label">{ userInstruction }</p>
+        <p className="user-form-field-label">{ this.props.field.user_instruction }</p>
         { input }
       </section>
-    ));
+    );
   }
 }
 
-export default DropTarget(
-  ItemTypes.CARD,
-  cardTarget,
-  connect => ({ connectDropTarget: connect.dropTarget() })
-)(DragSource(
-  ItemTypes.CARD,
-  cardSource,
-  (connect, monitor) => ({
-    connectDragSource: connect.dragSource(),
-    isDragging: monitor.isDragging()
-  })
-)(FieldLi));
+export default FieldLi;

@@ -1,12 +1,15 @@
 import React from 'react';
 import FieldLi from './form_field_li';
 import { Link } from 'react-router';
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 
 class Form extends React.Component {
   constructor(props) {
     super(props);
 
     this.changeFieldAndTabIndex = this.changeFieldAndTabIndex.bind(this);
+    this.moveCard = this.moveCard.bind(this);
   }
 
   changeFieldAndTabIndex(idx) {
@@ -14,6 +17,12 @@ class Form extends React.Component {
       this.props.changeFieldIndex(idx);
       this.props.changeTabIndex(2);
     }
+  }
+
+  moveCard(dragIndex, hoverIndex) {
+    const field1 = this.props.currentForm.fields[dragIndex];
+    const field2 = this.props.currentForm.fields[hoverIndex];
+    this.props.updateFields(field1, field2);
   }
 
   render() {
@@ -25,7 +34,7 @@ class Form extends React.Component {
             className="user-form-field"
             onClick={ this.changeFieldAndTabIndex(field.ord) }
             key={ field.ord }>
-            <FieldLi field={ field } />
+            <FieldLi moveCard={ (dInd, hInd) => this.moveCard(dInd, hInd) } field={ field } />
           </li>
         );
       });
@@ -49,4 +58,4 @@ class Form extends React.Component {
   }
 }
 
-export default Form;
+export default DragDropContext(HTML5Backend)(Form);
