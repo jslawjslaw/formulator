@@ -77,6 +77,12 @@
   opacity: 0.75;
 }
 
+.modal-error {
+  display: inline-block;
+  margin-left: 15px;
+  color: red;
+}
+
 .margin-left {
   margin-left: 10px;
 }

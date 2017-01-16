@@ -8,7 +8,7 @@ import FormManagerContainer from './form/form_manager_container';
 import FormBuildContainer from './form/form_build_container';
 import { fetchForm } from '../util/form_api_util';
 import FormContainer from './form/form_container';
-import SubmissionContainer from './submission/submission_container';
+import Submission from './submission/submission';
 import ResultsViewContainer from './submission/results_view_container';
 
 const Root = ({ store }) => {
@@ -52,7 +52,7 @@ const Root = ({ store }) => {
         <Route path="/build/:formId" onEnter={ (loc, rep, async) => ensureLoggedInAndUserOwnsForm(loc, rep, async) } component={ FormBuildContainer } />
         <Route path="/build" onEnter={ ensureLoggedIn } component={ FormBuildContainer } />
         <Route path="/form/:token" component={ FormContainer }/>
-        <Route path="/submission" component={ SubmissionContainer }/>
+        <Route path="/submission" component={ Submission }/>
         <Route path="/submissions/:formId" onEnter={ (loc, rep, async) => ensureLoggedInAndUserOwnsForm(loc, rep, async) } component={ ResultsViewContainer }/>
       </Router>
     </Provider>

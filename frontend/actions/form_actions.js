@@ -110,7 +110,8 @@ export function checkPassword(formId, password) {
 
   return (dispatch) => {
     return APIUtil.checkPassword(formId, password).then(
-      () => dispatch(passCheck(false))
+      () => dispatch(passCheck(false)),
+      (err) => dispatch(receiveErrors(err))
     );
   }
 }

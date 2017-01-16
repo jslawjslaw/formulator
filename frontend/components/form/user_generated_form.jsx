@@ -38,7 +38,6 @@ class UserGeneratedForm extends React.Component {
     let obj = {};
     let newValues = merge([], this.props.values);
     this.state.currentForm.fields.forEach( (field, idx) => {
-      debugger
       if (Array.isArray(newValues[idx])) {
         obj[field.id] = removeFalse(newValues[idx]);
       } else {
@@ -76,6 +75,7 @@ class UserGeneratedForm extends React.Component {
               <input type="password" className="margin-left" onChange={ this.password } value={ this.state.password }/>
             </label>
             <button className="modal-button" onClick={ this.checkPassword }>Submit</button>
+            <p className="modal-error">{ this.props.error }</p>
           </Modal>
 
           <div className="user-generated-form-show">

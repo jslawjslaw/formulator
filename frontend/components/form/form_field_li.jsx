@@ -119,6 +119,7 @@ class FieldLi extends React.Component {
         return (
           <div key={ idx }>
             <input
+              disabled
               onChange={ this.wrappedChange(choice, idx).bind(this) }
               className="user-form-field-input"
               checked={ this.state.radioValue[idx] }
@@ -139,6 +140,7 @@ class FieldLi extends React.Component {
         return (
           <div key={ idx }>
             <input
+              disabled
               onChange={ this.wrappedChange(choice, idx).bind(this) }
               className="user-form-field-input"
               checked={ this.state.checkboxValue[idx] }
@@ -159,6 +161,7 @@ class FieldLi extends React.Component {
         return (
           <option
             key={ idx }
+            disabled
             value={ choice }>{ choice }</option>
         );
       });
@@ -169,9 +172,9 @@ class FieldLi extends React.Component {
         </select>
       );
     } else if (this.props.field.field_type === 'textarea') {
-      input = <textarea onChange={ this.change } className="user-form-field-input"></textarea>
+      input = <textarea readOnly onChange={ this.change } className="user-form-field-input"></textarea>
     } else {
-      input = <input onChange={ this.change } className="user-form-field-input" type={ this.props.field.field_type }/>
+      input = <input readOnly onChange={ this.change } className="user-form-field-input" type={ this.props.field.field_type }/>
     }
 
     const userInstruction = this.props.field.user_instruction || "";

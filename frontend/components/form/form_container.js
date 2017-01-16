@@ -6,11 +6,14 @@ import { createSubmission } from '../../actions/submission_actions';
 import { checkPassword, setPassCheck } from '../../actions/form_actions';
 
 const mapStateToProps = (state, location) => {
+  let error = "";
+  if (state.errors.length) error = state.errors[0];
   return {
     permanent_link: location.params.token,
     values: state.values,
     router: location.router,
-    isOpen: state.forms.passCheck
+    isOpen: state.forms.passCheck,
+    error
    };
 };
 
